@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_item_home"
+            android:icon="@drawable/iconfont_home"
+            android:title="首页" />
+        <item
+            android:id="@+id/navigation_item_blog"
+            android:icon="@drawable/iconfont_blog"
+            android:title="我的博客" />
+
+        <item
+            android:id="@+id/navigation_item_about"
+            android:icon="@drawable/iconfont_about"
+            android:title="关于" />
+    </group>
+</menu>
