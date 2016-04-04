@@ -5,6 +5,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/navigation_item_home"
+            android:checked="true"
             android:icon="@drawable/iconfont_home"
             android:title="首页" />
         <item
