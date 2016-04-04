@@ -1,6 +1,5 @@
 package ren.solid.materialdesigndemo.activity;
 
-import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -8,14 +7,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.activity.base.BaseActivity;
+import ren.solid.materialdesigndemo.fragment.AboutFragment;
 import ren.solid.materialdesigndemo.fragment.BlogFragment;
 import ren.solid.materialdesigndemo.fragment.MainFragment;
 import ren.solid.materialdesigndemo.fragment.base.WebViewFragment;
@@ -56,14 +53,13 @@ public class MainActivity extends BaseActivity {
         mDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setNavigationViewItemClickListener();
-
         initDefaultFragment();
     }
 
 
     //初始化默认选中的Fragment
     private void initDefaultFragment() {
-        mCurrentFragment = ViewUtils.createFrgment("MainFragment");
+        mCurrentFragment = ViewUtils.createFrgment(MainFragment.class);
         mFragmentManager.beginTransaction().add(R.id.frame_content, mCurrentFragment).commit();
     }
 
@@ -74,15 +70,15 @@ public class MainActivity extends BaseActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_item_home:
                         mToolbar.setTitle("首页");
-                        switchFragment("MainFragment");
+                        switchFragment(MainFragment.class);
                         break;
                     case R.id.navigation_item_blog:
                         mToolbar.setTitle("我的博客");
-                        switchFragment("BlogFragment");
+                        switchFragment(BlogFragment.class);
                         break;
                     case R.id.navigation_item_about:
                         mToolbar.setTitle("关于");
-                        switchFragment("AboutFragment");
+                        switchFragment(AboutFragment.class);
                         break;
                     default:
                         break;
@@ -95,8 +91,8 @@ public class MainActivity extends BaseActivity {
     }
 
     //切换Fragment
-    private void switchFragment(String fName) {
-        Fragment to = ViewUtils.createFrgment(fName);
+    private void switchFragment(Class<?> clazz) {
+        Fragment to = ViewUtils.createFrgment(clazz);
         if (to.isAdded()) {
             mFragmentManager.beginTransaction().hide(mCurrentFragment).show(to).commit();
         } else {

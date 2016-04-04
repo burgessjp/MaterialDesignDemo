@@ -1,11 +1,8 @@
 package ren.solid.materialdesigndemo.activity.base;
 
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Slide;
-import android.view.Window;
 
 /**
  * Created by _SOLID
@@ -24,7 +21,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void initData() {
-
     }
 
     /***
@@ -37,4 +33,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void initView();
 
     protected abstract int setLayoutResourseID();
+
+    protected void startActivityWithoutExtras(Class<?> clazz) {
+        Intent intent = new Intent(this, clazz);
+        startActivity(intent);
+    }
+
+    protected void startActivityWithExtras(Class<?> clazz, Bundle extras) {
+        Intent intent = new Intent(this, clazz);
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
 }
