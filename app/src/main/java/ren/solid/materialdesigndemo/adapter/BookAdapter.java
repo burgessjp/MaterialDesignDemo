@@ -7,7 +7,7 @@ import java.util.List;
 
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.activity.BookDetailActivity;
-import ren.solid.materialdesigndemo.adapter.base.SolidBaseAdapter;
+import ren.solid.materialdesigndemo.adapter.base.SolidRVBaseAdapter;
 import ren.solid.materialdesigndemo.bean.BookBean;
 
 /**
@@ -15,7 +15,7 @@ import ren.solid.materialdesigndemo.bean.BookBean;
  * Date:2016/4/5
  * Time:11:34
  */
-public class BookAdapter extends SolidBaseAdapter<BookBean> {
+public class BookAdapter extends SolidRVBaseAdapter<BookBean> {
 
     public BookAdapter(Context context, List<BookBean> beans) {
         super(context, beans);

@@ -4,14 +4,18 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.jcodecraeer.xrecyclerview.ArrowRefreshHeader;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import org.json.JSONException;
@@ -23,6 +27,8 @@ import java.util.Random;
 
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.adapter.BookAdapter;
+import ren.solid.materialdesigndemo.adapter.base.SolidMultiItemTypeRVBaseAdapter;
+import ren.solid.materialdesigndemo.adapter.base.SolidRVBaseAdapter;
 import ren.solid.materialdesigndemo.bean.BookBean;
 import ren.solid.materialdesigndemo.constants.Apis;
 import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
@@ -77,9 +83,15 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
                 switchAction(ACTION_LOAD_MORE);
             }
         });
-
+        mRecyclerView.setRefreshProgressStyle(ProgressStyle.BallClipRotatePulse);
+        mRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.SquareSpin);
+        TextView tv_empty = new TextView(getMContext());
+        tv_empty.setText("Empty");
+        //mRecyclerView.setEmptyView(tv_empty);
         mFABSearch.setOnClickListener(this);
         initInputDialog();
+
+
     }
 
     @Override
@@ -113,7 +125,8 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
                             new TypeToken<List<BookBean>>() {
                             }.getType());
                     mBookAdapter.addAll(list);
-                    mRecyclerView.refreshComplete();
+                    if (mCurrentAction == ACTION_REFLESH)
+                        mRecyclerView.refreshComplete();
                     if (mCurrentAction == ACTION_LOAD_MORE)
                         mRecyclerView.loadMoreComplete();
                 } catch (JSONException e) {

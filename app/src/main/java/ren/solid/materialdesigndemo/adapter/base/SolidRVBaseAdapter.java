@@ -19,36 +19,37 @@ import ren.solid.materialdesigndemo.utils.ViewUtils;
  * Created by _SOLID
  * Date:2016/4/5
  * Time:11:18
- * <p>
+ * <p/>
  * 通用的RecyclerView的适配器
- * <p>
+ * <p/>
  * 思想上参考了Hongyang的 http://blog.csdn.net/lmj623565791/article/details/38902805这篇博客
  */
-public abstract class SolidBaseAdapter<T> extends RecyclerView.Adapter<SolidBaseAdapter.SolidCommonViewHolder> {
+public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRVBaseAdapter.SolidCommonViewHolder> {
 
     protected List<T> mBeans;
     protected Context mContext;
     protected boolean mAnimateItems = true;
     protected int mLastAnimatedPosition = -1;
 
-    public SolidBaseAdapter(Context context, List<T> beans) {
+    public SolidRVBaseAdapter(Context context, List<T> beans) {
         mContext = context;
         mBeans = beans;
     }
 
     @Override
-    public SolidBaseAdapter.SolidCommonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SolidRVBaseAdapter.SolidCommonViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(getItemLayoutID(), parent, false);
+        View view = inflater.inflate(getItemLayoutID(viewType), parent, false);
         SolidCommonViewHolder holder = new SolidCommonViewHolder(view);
         return holder;
     }
 
 
     @Override
-    public void onBindViewHolder(SolidBaseAdapter.SolidCommonViewHolder holder, int position) {
+    public void onBindViewHolder(SolidRVBaseAdapter.SolidCommonViewHolder holder, int position) {
         runEnterAnimation(holder.itemView, position);
         onBindDataToView(holder, mBeans.get(position));
+
     }
 
     protected abstract void onBindDataToView(SolidCommonViewHolder holder, T bean);
@@ -58,7 +59,7 @@ public abstract class SolidBaseAdapter<T> extends RecyclerView.Adapter<SolidBase
      *
      * @return
      */
-    public abstract int getItemLayoutID();
+    public abstract int getItemLayoutID(int viewType);
 
 
     @Override

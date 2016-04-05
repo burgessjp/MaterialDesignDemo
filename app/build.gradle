@@ -22,12 +22,11 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'de.hdodenhof:circleimageview:1.3.0'
     compile 'com.android.support:design:23.1.1'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.jcodecraeer:xrecyclerview:1.2.6'
     compile 'com.android.support:cardview-v7:23.1.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile project(':xrecyclerview')
 }
