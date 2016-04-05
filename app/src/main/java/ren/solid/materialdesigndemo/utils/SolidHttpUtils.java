@@ -73,7 +73,7 @@ public class SolidHttpUtils {
     }
 
     public void loadImage(String url, ImageView iv) {
-        Picasso.with(SolidApplication.getInstance()).load(url).into(iv);
+        Picasso.with(SolidApplication.getInstance()).load(url).fit().into(iv);
     }
 
     public interface HttpCallBack {

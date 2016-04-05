@@ -1,10 +1,8 @@
 package ren.solid.materialdesigndemo.fragment;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -114,7 +112,6 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
                             jsonObject.getString("books"),
                             new TypeToken<List<BookBean>>() {
                             }.getType());
-
                     mBookAdapter.addAll(list);
                     mRecyclerView.refreshComplete();
                     if (mCurrentAction == ACTION_LOAD_MORE)
