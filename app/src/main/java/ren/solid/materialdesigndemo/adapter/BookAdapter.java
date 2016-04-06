@@ -22,7 +22,7 @@ public class BookAdapter extends SolidRVBaseAdapter<BookBean> {
     }
 
     @Override
-    public int getItemLayoutID() {
+    public int getItemLayoutID(int vieWType) {
         return R.layout.item_book;
     }
 

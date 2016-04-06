@@ -19,9 +19,9 @@ import ren.solid.materialdesigndemo.utils.ViewUtils;
  * Created by _SOLID
  * Date:2016/4/5
  * Time:11:18
- * <p/>
+ * <p>
  * 通用的RecyclerView的适配器
- * <p/>
+ * <p>
  * 思想上参考了Hongyang的 http://blog.csdn.net/lmj623565791/article/details/38902805这篇博客
  */
 public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRVBaseAdapter.SolidCommonViewHolder> {
@@ -52,11 +52,15 @@ public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRV
 
     }
 
+    /**
+     * 绑定数据到Item的控件中去
+     * @param holder
+     * @param bean
+     */
     protected abstract void onBindDataToView(SolidCommonViewHolder holder, T bean);
 
     /**
-     * ItemView的布局文件
-     *
+     * 取得ItemView的布局文件
      * @return
      */
     public abstract int getItemLayoutID(int viewType);

@@ -4,8 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.jcodecraeer.xrecyclerview.ArrowRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -27,8 +24,6 @@ import java.util.Random;
 
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.adapter.BookAdapter;
-import ren.solid.materialdesigndemo.adapter.base.SolidMultiItemTypeRVBaseAdapter;
-import ren.solid.materialdesigndemo.adapter.base.SolidRVBaseAdapter;
 import ren.solid.materialdesigndemo.bean.BookBean;
 import ren.solid.materialdesigndemo.constants.Apis;
 import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
