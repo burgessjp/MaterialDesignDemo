@@ -15,7 +15,7 @@ import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.activity.base.BaseActivity;
 import ren.solid.materialdesigndemo.adapter.BookInfoPageAdapter;
 import ren.solid.materialdesigndemo.bean.BookBean;
-import ren.solid.materialdesigndemo.utils.SolidHttpUtils;
+import ren.solid.materialdesigndemo.utils.HttpUtils;
 
 /**
  * Created by _SOLID
@@ -75,7 +75,7 @@ public class BookDetailActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        SolidHttpUtils.getInstance().loadString(mUrl, new SolidHttpUtils.HttpCallBack() {
+        HttpUtils.getInstance().loadString(mUrl, new HttpUtils.HttpCallBack() {
             @Override
             public void onLoading() {
 
@@ -89,7 +89,7 @@ public class BookDetailActivity extends BaseActivity {
                 mTvTitle.setText(mBookBean.getTitle());
                 mTvMsg.setText(mBookBean.getAuthor() + "/" + mBookBean.getPublisher() + "/" + mBookBean.getPubdate());
                 mTvRating.setText(mBookBean.getRating().getAverage() + "分");
-                SolidHttpUtils.getInstance().loadImage(mBookBean.getImages().getLarge(), mIvBook);
+                HttpUtils.getInstance().loadImage(mBookBean.getImages().getLarge(), mIvBook);
 
                 BookInfoPageAdapter adapter = new BookInfoPageAdapter(BookDetailActivity.this, mBookBean, getSupportFragmentManager());
                 mViewPager.setAdapter(adapter);

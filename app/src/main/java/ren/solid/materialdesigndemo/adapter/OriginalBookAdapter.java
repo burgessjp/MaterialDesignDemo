@@ -15,7 +15,7 @@ import java.util.List;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.activity.BookDetailActivity;
 import ren.solid.materialdesigndemo.bean.BookBean;
-import ren.solid.materialdesigndemo.utils.SolidHttpUtils;
+import ren.solid.materialdesigndemo.utils.HttpUtils;
 import ren.solid.materialdesigndemo.utils.ViewUtils;
 
 /**
@@ -59,7 +59,7 @@ public class OriginalBookAdapter extends RecyclerView.Adapter<OriginalBookAdapte
         holder.tv_publisher.setText("出版社:" + bookBean.getPublisher());
         holder.tv_num_rating.setText(bookBean.getRating().getNumRaters() + "人评分");
 
-        SolidHttpUtils.getInstance().loadImage(bookBean.getImage(), holder.iv_image);
+        HttpUtils.getInstance().loadImage(bookBean.getImage(), holder.iv_image);
 
 
     }

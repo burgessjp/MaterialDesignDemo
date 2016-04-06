@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ren.solid.materialdesigndemo.utils.SolidHttpUtils;
+import ren.solid.materialdesigndemo.utils.HttpUtils;
 import ren.solid.materialdesigndemo.utils.ViewUtils;
 
 /**
@@ -162,7 +162,7 @@ public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRV
          */
         public void setImageFromInternet(int viewId, String url) {
             ImageView iv = getView(viewId);
-            SolidHttpUtils.getInstance().loadImage(url, iv);//这里可根据自己的需要变更
+            HttpUtils.getInstance().loadImage(url, iv);//这里可根据自己的需要变更
         }
     }
 

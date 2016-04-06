@@ -18,19 +18,19 @@ import ren.solid.materialdesigndemo.SolidApplication;
  * Date:2016/3/30
  * Time:15:02
  */
-public class SolidHttpUtils {
+public class HttpUtils {
 
     private Handler mHandler;
-    private static SolidHttpUtils mInstance;
+    private static HttpUtils mInstance;
 
-    private SolidHttpUtils() {
+    private HttpUtils() {
         mHandler = new Handler(Looper.getMainLooper());
     }
 
 
-    public static SolidHttpUtils getInstance() {
+    public static HttpUtils getInstance() {
         if (mInstance == null)
-            mInstance = new SolidHttpUtils();
+            mInstance = new HttpUtils();
         return mInstance;
     }
 

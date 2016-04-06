@@ -27,7 +27,7 @@ import ren.solid.materialdesigndemo.adapter.BookAdapter;
 import ren.solid.materialdesigndemo.bean.BookBean;
 import ren.solid.materialdesigndemo.constants.Apis;
 import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
-import ren.solid.materialdesigndemo.utils.SolidHttpUtils;
+import ren.solid.materialdesigndemo.utils.HttpUtils;
 
 /**
  * Created by _SOLID
@@ -82,7 +82,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
         mRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.SquareSpin);
         TextView tv_empty = new TextView(getMContext());
         tv_empty.setText("Empty");
-        //mRecyclerView.setEmptyView(tv_empty);
+        mRecyclerView.setEmptyView(tv_empty);
         mFABSearch.setOnClickListener(this);
         initInputDialog();
 
@@ -102,7 +102,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
     private void getData() {
         String reqUrl = Apis.SearchBookApi + "?q=" + mCurrentKeyWord + "&start=" + (mCurrentPageIndex - 1) * mPageSize +
                 "&count=" + mPageSize;
-        SolidHttpUtils.getInstance().loadString(reqUrl, new SolidHttpUtils.HttpCallBack() {
+        HttpUtils.getInstance().loadString(reqUrl, new HttpUtils.HttpCallBack() {
             @Override
             public void onLoading() {
                 if (mCurrentAction == ACTION_INIT)

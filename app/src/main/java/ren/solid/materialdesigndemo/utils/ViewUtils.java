@@ -21,6 +21,9 @@ import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
  */
 public class ViewUtils {
 
+    public static final int INT = 21;
+    public static final int INT1 = 4;
+    public static final int INT2 = 5;
     private static Map<String, BaseFragment> fragmentList = new HashMap<>();
 
 //    /**
@@ -109,27 +112,27 @@ public class ViewUtils {
         return displayMetrics.heightPixels;
     }
 
-    /**
-     * 将dp转换成对应的像素值
-     *
-     * @param context
-     * @param dp
-     * @return
-     */
-    public static float convertDp2Px(Context context, int dp) {
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, metrics);
+    //转换dp为px
+    public static int dp2px(Context context, int dip) {
+        float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dip * scale + 0.5f * (dip >= 0 ? 1 : -1));
     }
 
-    /**
-     * 将sp转换成对应的像素值
-     *
-     * @param context
-     * @param sp
-     * @return
-     */
-    public static float convertSp2Px(Context context, int sp) {
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, metrics);
+    //转换px为dp
+    public static int px2dp(Context context, int px) {
+        float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (px / scale + 0.5f * (px >= 0 ? 1 : -1));
+    }
+
+    //转换sp为px
+    public static int sp2px(Context context, float spValue) {
+        float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
+    }
+
+    //转换px为sp
+    public static int px2sp(Context context, float pxValue) {
+        float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (pxValue / fontScale + 0.5f);
     }
 }
