@@ -14,6 +14,7 @@ import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.activity.base.BaseActivity;
 import ren.solid.materialdesigndemo.fragment.AboutFragment;
 import ren.solid.materialdesigndemo.fragment.BlogFragment;
+import ren.solid.materialdesigndemo.fragment.CustomViewFragment;
 import ren.solid.materialdesigndemo.fragment.MainFragment;
 import ren.solid.materialdesigndemo.fragment.base.WebViewFragment;
 import ren.solid.materialdesigndemo.utils.ViewUtils;
@@ -75,6 +76,10 @@ public class MainActivity extends BaseActivity {
                     case R.id.navigation_item_blog:
                         mToolbar.setTitle("我的博客");
                         switchFragment(BlogFragment.class);
+                        break;
+                    case R.id.navigation_item_custom_view:
+                        mToolbar.setTitle("自定义View");
+                        switchFragment(CustomViewFragment.class);
                         break;
                     case R.id.navigation_item_about:
                         mToolbar.setTitle("关于");

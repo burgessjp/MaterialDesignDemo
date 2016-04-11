@@ -26,6 +26,7 @@ public abstract class BaseFragment extends Fragment {
         mContentView = setContentView(inflater, container);
         mContext = getContext();
         mProgressDialog = new ProgressDialog(getMContext());
+        mProgressDialog.setCanceledOnTouchOutside(false);
         init();
         initView();
         initData();

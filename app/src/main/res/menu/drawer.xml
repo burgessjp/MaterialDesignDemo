@@ -12,6 +12,10 @@
             android:id="@+id/navigation_item_blog"
             android:icon="@drawable/iconfont_blog"
             android:title="我的博客" />
+        <item
+            android:id="@+id/navigation_item_custom_view"
+            android:icon="@drawable/iconfont_custom_view"
+            android:title="自定义View" />
 
         <item
             android:id="@+id/navigation_item_about"
