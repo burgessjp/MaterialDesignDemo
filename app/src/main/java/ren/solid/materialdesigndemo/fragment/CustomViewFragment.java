@@ -21,7 +21,7 @@ public class CustomViewFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_custom_view, container, false);
         QQHealthView qqHealthView = (QQHealthView) view.findViewById(R.id.qqhealthview);
         qqHealthView.setSteps(new int[]{100, 15280, 8900, 9200, 6500, 5660, 9450});
-      //  qqHealthView.setThemeColor(Color.parseColor("#00000f"));
+        qqHealthView.setThemeColor(getResources().getColor(R.color.colorPrimary));
         return view;
     }
 }
