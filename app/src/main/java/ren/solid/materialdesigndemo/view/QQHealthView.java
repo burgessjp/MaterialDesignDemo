@@ -53,9 +53,6 @@ public class QQHealthView extends View {
     private int mDefaultThemeColor;//主题色
     private int mDefaultUpBackgroundColor;//上层默认的背景色
 
-    private float mDefaultArcWidth;
-    private float mDefaultBarWidth;
-
     private int mThemeColor;
     private int mUpBackgroundColor;
     private float mArcWidth;
@@ -253,10 +250,8 @@ public class QQHealthView extends View {
         mArcRect.right = mArcCenterX + 125.f / 450.f * mWidth;
         mArcRect.bottom = mArcCenterY + 125.f / 525.f * mHeight;
 
-        mDefaultArcWidth = 20.f / 450.f * mWidth;
-        mDefaultBarWidth = 16.f / 450.f * mWidth;
-        mArcWidth = mDefaultArcWidth;
-        mBarWidth = mDefaultBarWidth;
+        mArcWidth = 20.f / 450.f * mWidth;
+        mBarWidth = 16.f / 450.f * mWidth;
 
         //画笔的宽度一定要在这里设置才能自适应
         mArcPaint.setStrokeWidth(mArcWidth);
@@ -269,10 +264,8 @@ public class QQHealthView extends View {
         float startY;
         float stopX;
         float stopY;
-
         float xPos;
         float yPos;
-
         //1.绘制最下层背景
         drawBelowBackground(0, 0, mWidth, mHeight, mBackgroundCorner, canvas, mBackgroundPaint);
         //2.绘制上面的背景
