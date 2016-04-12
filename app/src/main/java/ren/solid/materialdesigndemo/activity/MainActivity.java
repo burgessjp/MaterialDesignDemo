@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity {
     private Fragment mCurrentFragment;
 
     @Override
-    protected int setLayoutResourseID() {
+    protected int setLayoutResourceID() {
         return R.layout.activity_main;
     }
 
@@ -42,9 +42,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+        mToolbar = customFindViewById(R.id.toolbar);
+        mDrawerLayout = customFindViewById(R.id.drawer_layout);
+        mNavigationView = customFindViewById(R.id.navigation_view);
 
         mToolbar.setTitle("首页");
         //这句一定要在下面几句之前调用，不然就会出现点击无反应

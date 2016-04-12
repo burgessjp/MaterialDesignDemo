@@ -50,13 +50,13 @@ public class BookDetailActivity extends BaseActivity {
             }
         });
 
-        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
-        mIvBook = (ImageView) findViewById(R.id.iv_book_image);
-        mTvTitle = (TextView) findViewById(R.id.tv_title);
-        mTvMsg = (TextView) findViewById(R.id.tv_msg);
-        mTvRating = (TextView) findViewById(R.id.tv_rating);
-        mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        mTabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        mCollapsingToolbarLayout =customFindViewById(R.id.collapsing_toolbar_layout);
+        mIvBook = customFindViewById(R.id.iv_book_image);
+        mTvTitle =customFindViewById(R.id.tv_title);
+        mTvMsg = customFindViewById(R.id.tv_msg);
+        mTvRating =customFindViewById(R.id.tv_rating);
+        mViewPager = customFindViewById(R.id.viewpager);
+        mTabLayout =customFindViewById(R.id.sliding_tabs);
         mTabLayout.addTab(mTabLayout.newTab().setText("作者信息"));
         mTabLayout.addTab(mTabLayout.newTab().setText("章节"));
         mTabLayout.addTab(mTabLayout.newTab().setText("书籍简介"));
@@ -64,7 +64,7 @@ public class BookDetailActivity extends BaseActivity {
     }
 
     @Override
-    protected int setLayoutResourseID() {
+    protected int setLayoutResourceID() {
         return R.layout.activity_book_detail;
     }
 

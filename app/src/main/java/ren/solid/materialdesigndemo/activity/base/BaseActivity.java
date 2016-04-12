@@ -3,6 +3,7 @@ package ren.solid.materialdesigndemo.activity.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 /**
  * Created by _SOLID
@@ -14,7 +15,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(setLayoutResourseID());
+        setContentView(setLayoutResourceID());
         init();
         initView();
         initData();
@@ -32,7 +33,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void initView();
 
-    protected abstract int setLayoutResourseID();
+    protected abstract int setLayoutResourceID();
+
+    protected <T extends View> T customFindViewById(int id) {
+        return (T) super.findViewById(id);
+    }
+
 
     protected void startActivityWithoutExtras(Class<?> clazz) {
         Intent intent = new Intent(this, clazz);

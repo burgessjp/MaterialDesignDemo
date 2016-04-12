@@ -44,6 +44,10 @@ public abstract class BaseFragment extends Fragment {
     protected void initView() {
     }
 
+    protected <T extends View> T customFindViewById(int id) {
+        return (T) mContentView.findViewById(id);
+    }
+
     protected abstract View setContentView(LayoutInflater inflater, ViewGroup container);
 
     protected View getContentView() {

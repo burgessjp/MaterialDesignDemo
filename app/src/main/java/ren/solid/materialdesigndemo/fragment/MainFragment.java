@@ -18,11 +18,10 @@ import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
  * Date:2016/3/30
  * Time:11:29
  */
-public class MainFragment extends BaseFragment{
+public class MainFragment extends BaseFragment {
 
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-
 
 
     @Override
@@ -32,8 +31,8 @@ public class MainFragment extends BaseFragment{
 
     @Override
     protected void initView() {
-        mTabLayout = (TabLayout) getContentView().findViewById(R.id.sliding_tabs);
-        mViewPager = (ViewPager) getContentView().findViewById(R.id.viewpager);
+        mTabLayout = customFindViewById(R.id.sliding_tabs);
+        mViewPager = customFindViewById(R.id.viewpager);
 
 
         List<String> titles = new ArrayList<>();

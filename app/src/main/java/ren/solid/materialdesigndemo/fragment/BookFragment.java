@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,9 +62,9 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected void initView() {
-        mFABSearch = (FloatingActionButton) getContentView().findViewById(R.id.fab_search);
+        mFABSearch = customFindViewById(R.id.fab_search);
         LinearLayoutManager LayoutManager = new LinearLayoutManager(getContext());
-        mRecyclerView = (XRecyclerView) getContentView().findViewById(R.id.recyclerview);
+        mRecyclerView = customFindViewById(R.id.recyclerview);
         mBookAdapter = new BookAdapter(getMContext(), new ArrayList<BookBean>());
         mRecyclerView.setAdapter(mBookAdapter);
         mRecyclerView.setLayoutManager(LayoutManager);
@@ -131,8 +132,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 
             @Override
             public void onError(Exception e) {
-                getProgressDialog().hide();
-                System.out.println("onError:" + e);
+                Log.e(TAG,"onError:" + e);
             }
         });
     }

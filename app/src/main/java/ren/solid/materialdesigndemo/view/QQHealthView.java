@@ -324,6 +324,8 @@ public class QQHealthView extends View {
             startX = 55.f / 450.f * mWidth + i * (57.f / 450.f * mWidth);
             stopX = startX;
             stopY = startY - barHeight;
+            if (mSteps[i] < mAverageStep) mBarPaint.setColor(Color.parseColor("#C1C1C1"));
+            else mBarPaint.setColor(mThemeColor);
             canvas.drawLine(startX, startY, stopX, stopY, mBarPaint);
             canvas.drawText("0" + (i + 1) + "日", startX, startY + 25.f / 525.f * mHeight, mTextPaint);
         }
