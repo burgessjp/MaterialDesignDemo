@@ -1,5 +1,7 @@
 package ren.solid.materialdesigndemo.fragment.base;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +33,7 @@ public abstract class WebViewFragment extends BaseFragment {
      * 需要加载的Url<br/>
      * assert中的文件：file:///android_asset/about.htm<br/>
      * 网页： http://www.jianshu.com/users/6725c8e8194f/<br/>
-     * <p>
+     * <p/>
      *
      * @return
      */
@@ -47,7 +49,6 @@ public abstract class WebViewFragment extends BaseFragment {
         mWebView.setWebChromeClient(new MyWebChromeClient());
 
         mProgressBar.setMax(100);
-
         mWebView.loadUrl(getLoadUrl());
 
     }

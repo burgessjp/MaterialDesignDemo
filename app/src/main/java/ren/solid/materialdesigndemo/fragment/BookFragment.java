@@ -2,6 +2,8 @@ package ren.solid.materialdesigndemo.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
@@ -81,13 +83,9 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
         });
         mRecyclerView.setRefreshProgressStyle(ProgressStyle.BallClipRotatePulse);
         mRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.SquareSpin);
-        TextView tv_empty = new TextView(getMContext());
-        tv_empty.setText("Empty");
-        mRecyclerView.setEmptyView(tv_empty);
         mFABSearch.setOnClickListener(this);
         initInputDialog();
-
-
+        dynamicAddSkinView(mFABSearch, "backgroundTint", R.color.colorAccent);
     }
 
     @Override
@@ -132,7 +130,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 
             @Override
             public void onError(Exception e) {
-                Log.e(TAG,"onError:" + e);
+                Log.e(TAG, "onError:" + e);
             }
         });
     }

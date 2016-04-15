@@ -1,5 +1,7 @@
 package ren.solid.materialdesigndemo.activity;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,7 @@ import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.activity.base.BaseActivity;
 import ren.solid.materialdesigndemo.fragment.AboutFragment;
 import ren.solid.materialdesigndemo.fragment.BlogFragment;
+import ren.solid.materialdesigndemo.fragment.ChangeSkinFragment;
 import ren.solid.materialdesigndemo.fragment.CustomViewFragment;
 import ren.solid.materialdesigndemo.fragment.MainFragment;
 import ren.solid.materialdesigndemo.fragment.base.WebViewFragment;
@@ -55,6 +58,9 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setNavigationViewItemClickListener();
         initDefaultFragment();
+        dynamicAddSkinEnableView(mToolbar, "background", R.color.colorPrimary);
+        dynamicAddSkinEnableView(mNavigationView.getHeaderView(0), "background", R.color.colorPrimary);
+        dynamicAddSkinEnableView(mNavigationView, "navigationViewMenu", R.color.colorPrimary);
     }
 
 
@@ -80,6 +86,10 @@ public class MainActivity extends BaseActivity {
                     case R.id.navigation_item_custom_view:
                         mToolbar.setTitle("自定义View");
                         switchFragment(CustomViewFragment.class);
+                        break;
+                    case R.id.navigation_item_switch_theme:
+                        mToolbar.setTitle("主题换肤");
+                        switchFragment(ChangeSkinFragment.class);
                         break;
                     case R.id.navigation_item_about:
                         mToolbar.setTitle("关于");
@@ -111,7 +121,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
+        if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {//当前抽屉是打开的，则关闭
             mDrawerLayout.closeDrawer(Gravity.LEFT);
             return;
         }

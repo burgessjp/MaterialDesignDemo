@@ -1,1 +1,1 @@
-include ':app','xrecyclerview'
+include ':app', ':lib_skinloader', ':skin_brown', ':skin_black','xrecyclerview'

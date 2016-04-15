@@ -1,6 +1,7 @@
 package ren.solid.materialdesigndemo.utils;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
@@ -134,5 +135,35 @@ public class ViewUtils {
     public static int px2sp(Context context, float pxValue) {
         float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
+    }
+
+    public static int getThemeColorPrimary(Context ctx) {
+        TypedValue typedValue = new TypedValue();
+        ctx.getTheme().resolveAttribute(android.R.attr.theme, typedValue, true);
+        int[] attribute = new int[]{android.R.attr.colorPrimary};
+        TypedArray array = ctx.obtainStyledAttributes(typedValue.resourceId, attribute);
+        int color = array.getColor(0, -1);
+        array.recycle();
+        return color;
+    }
+
+    public static int getThemeColorPrimaryDark(Context ctx) {
+        TypedValue typedValue = new TypedValue();
+        ctx.getTheme().resolveAttribute(android.R.attr.theme, typedValue, true);
+        int[] attribute = new int[]{android.R.attr.colorPrimaryDark};
+        TypedArray array = ctx.obtainStyledAttributes(typedValue.resourceId, attribute);
+        int color = array.getColor(0, -1);
+        array.recycle();
+        return color;
+    }
+
+    public static int getThemeColorAccent(Context ctx) {
+        TypedValue typedValue = new TypedValue();
+        ctx.getTheme().resolveAttribute(android.R.attr.theme, typedValue, true);
+        int[] attribute = new int[]{android.R.attr.colorAccent};
+        TypedArray array = ctx.obtainStyledAttributes(typedValue.resourceId, attribute);
+        int color = array.getColor(0, -1);
+        array.recycle();
+        return color;
     }
 }

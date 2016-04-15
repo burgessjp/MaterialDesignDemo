@@ -9,12 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import ren.solid.skinloader.base.SkinBaseFragment;
+
 /**
  * Created by _SOLID
  * Date:2016/3/30
  * Time:11:30
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends SkinBaseFragment {
 
     private View mContentView;
     private Context mContext;

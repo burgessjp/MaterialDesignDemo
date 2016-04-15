@@ -1,6 +1,7 @@
 package ren.solid.materialdesigndemo.activity;
 
 
+import android.graphics.Color;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -50,16 +51,19 @@ public class BookDetailActivity extends BaseActivity {
             }
         });
 
-        mCollapsingToolbarLayout =customFindViewById(R.id.collapsing_toolbar_layout);
+        mCollapsingToolbarLayout = customFindViewById(R.id.collapsing_toolbar_layout);
         mIvBook = customFindViewById(R.id.iv_book_image);
-        mTvTitle =customFindViewById(R.id.tv_title);
+        mTvTitle = customFindViewById(R.id.tv_title);
         mTvMsg = customFindViewById(R.id.tv_msg);
-        mTvRating =customFindViewById(R.id.tv_rating);
+        mTvRating = customFindViewById(R.id.tv_rating);
         mViewPager = customFindViewById(R.id.viewpager);
-        mTabLayout =customFindViewById(R.id.sliding_tabs);
+        mTabLayout = customFindViewById(R.id.sliding_tabs);
         mTabLayout.addTab(mTabLayout.newTab().setText("作者信息"));
         mTabLayout.addTab(mTabLayout.newTab().setText("章节"));
         mTabLayout.addTab(mTabLayout.newTab().setText("书籍简介"));
+        mTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#6d4c41"));
+        dynamicAddSkinEnableView(mTabLayout, "tabIndicatorColor", R.color.colorAccent);
+        dynamicAddSkinEnableView(mCollapsingToolbarLayout, "contentScrimColor", R.color.colorPrimary);
 
     }
 

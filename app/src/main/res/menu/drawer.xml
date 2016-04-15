@@ -18,6 +18,11 @@
             android:title="自定义View" />
 
         <item
+            android:id="@+id/navigation_item_switch_theme"
+            android:icon="@drawable/iconfont_skin"
+            android:title="主题换肤" />
+
+        <item
             android:id="@+id/navigation_item_about"
             android:icon="@drawable/iconfont_about"
             android:title="关于" />

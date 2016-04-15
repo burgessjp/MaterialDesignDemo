@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
+import ren.solid.materialdesigndemo.utils.ViewUtils;
 import ren.solid.materialdesigndemo.view.QQHealthView;
 
 /**
@@ -20,7 +21,7 @@ public class CustomViewFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_custom_view, container, false);
         QQHealthView qqHealthView = (QQHealthView) view.findViewById(R.id.qqhealthview);
         qqHealthView.setSteps(new int[]{100, 15280, 8900, 9200, 6500, 5660, 9450});
-        qqHealthView.setThemeColor(getResources().getColor(R.color.colorPrimary));
+        qqHealthView.setThemeColor(ViewUtils.getThemeColorPrimary(getActivity()));
         return view;
     }
 }

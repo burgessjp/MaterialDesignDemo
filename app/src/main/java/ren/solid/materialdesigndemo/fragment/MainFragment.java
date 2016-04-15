@@ -46,6 +46,6 @@ public class MainFragment extends BaseFragment {
         mTabLayout.addTab(mTabLayout.newTab().setText("电影"));
         mTabLayout.setupWithViewPager(mViewPager);
 
-
+        dynamicAddSkinView(mTabLayout, "tabIndicatorColor", R.color.colorAccent);
     }
 }
