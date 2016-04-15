@@ -33,7 +33,7 @@ public class SkinManager implements ISkinLoader {
     private static SkinManager mInstance;
     private Context context;
     private Resources mResources;
-    private boolean isDefaultSkin = false;
+    private boolean isDefaultSkin = false;//当前的皮肤是否是默认的
     private String skinPackageName;//皮肤的包名
     private String skinPath;//皮肤路径
 

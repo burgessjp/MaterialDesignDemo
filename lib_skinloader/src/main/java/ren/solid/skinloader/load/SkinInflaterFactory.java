@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ren.solid.skinloader.config.SkinConfig;
-import ren.solid.skinloader.entity.AttrFactory;
+import ren.solid.skinloader.attr.AttrFactory;
 import ren.solid.skinloader.attr.DynamicAttr;
 import ren.solid.skinloader.attr.SkinAttr;
 import ren.solid.skinloader.entity.SkinItem;

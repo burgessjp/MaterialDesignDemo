@@ -1,7 +1,5 @@
 package ren.solid.skinloader.attr;
 
-import ren.solid.skinloader.entity.AttrFactory;
-
 /**
  * Created by _SOLID
  * Date:2016/4/14
