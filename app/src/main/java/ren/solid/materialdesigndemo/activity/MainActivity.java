@@ -61,6 +61,7 @@ public class MainActivity extends BaseActivity {
         dynamicAddSkinEnableView(mToolbar, "background", R.color.colorPrimary);
         dynamicAddSkinEnableView(mNavigationView.getHeaderView(0), "background", R.color.colorPrimary);
         dynamicAddSkinEnableView(mNavigationView, "navigationViewMenu", R.color.colorPrimary);
+
     }
 
 

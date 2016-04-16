@@ -25,7 +25,7 @@ public abstract class BaseFragment extends SkinBaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mContentView = setContentView(inflater, container);
+        mContentView = inflater.inflate(setLayoutResourceID(), container, false);//setContentView(inflater, container);
         mContext = getContext();
         mProgressDialog = new ProgressDialog(getMContext());
         mProgressDialog.setCanceledOnTouchOutside(false);
@@ -34,6 +34,8 @@ public abstract class BaseFragment extends SkinBaseFragment {
         initData();
         return mContentView;
     }
+
+    protected abstract int setLayoutResourceID();
 
     protected void initData() {
 
@@ -50,7 +52,7 @@ public abstract class BaseFragment extends SkinBaseFragment {
         return (T) mContentView.findViewById(id);
     }
 
-    protected abstract View setContentView(LayoutInflater inflater, ViewGroup container);
+    // protected abstract View setContentView(LayoutInflater inflater, ViewGroup container);
 
     protected View getContentView() {
         return mContentView;

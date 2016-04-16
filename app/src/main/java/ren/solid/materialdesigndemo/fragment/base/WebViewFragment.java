@@ -25,15 +25,15 @@ public abstract class WebViewFragment extends BaseFragment {
     protected ProgressBar mProgressBar;
 
     @Override
-    protected View setContentView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.fragment_webview, container, false);
+    protected int setLayoutResourceID() {
+        return R.layout.fragment_webview;
     }
 
     /**
      * 需要加载的Url<br/>
      * assert中的文件：file:///android_asset/about.htm<br/>
      * 网页： http://www.jianshu.com/users/6725c8e8194f/<br/>
-     * <p/>
+     * <p>
      *
      * @return
      */

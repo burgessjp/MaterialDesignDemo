@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:skin="http://schemas.android.com/android/skin"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -10,9 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="15dp"
+        android:background="@color/windowBackground"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="10dp"
-        app:cardElevation="10dp">
-
+        app:cardElevation="10dp"
+        skin:enable="true">
+        <!--给CardView设置背景色应该使用cardBackgroundColor，直接使用background就会没有圆角效果，这里简单起见就没做处理了-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

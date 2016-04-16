@@ -15,8 +15,8 @@ import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
 public class MovieFragment extends BaseFragment {
 
     @Override
-    protected View setContentView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.fragment_movie, container, false);
+    protected int setLayoutResourceID() {
+        return R.layout.fragment_movie;
     }
 
     @Override

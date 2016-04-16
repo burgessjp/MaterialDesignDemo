@@ -58,8 +58,8 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 
 
     @Override
-    protected View setContentView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.fragment_book, container, false);
+    protected int setLayoutResourceID() {
+        return R.layout.fragment_book;
     }
 
     @Override

@@ -3,7 +3,6 @@ package ren.solid.skinloader.load;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.view.LayoutInflaterFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,10 +11,10 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import ren.solid.skinloader.config.SkinConfig;
 import ren.solid.skinloader.attr.AttrFactory;
 import ren.solid.skinloader.attr.DynamicAttr;
 import ren.solid.skinloader.attr.SkinAttr;
+import ren.solid.skinloader.config.SkinConfig;
 import ren.solid.skinloader.entity.SkinItem;
 import ren.solid.skinloader.util.L;
 import ren.solid.skinloader.util.ListUtils;
@@ -24,7 +23,7 @@ import ren.solid.skinloader.util.ListUtils;
  * Created by _SOLID
  * Date:2016/4/13
  * Time:21:19
- * <p/>
+ * <p>
  * 自定义的InflaterFactory，用来代替默认的InflaterFactory
  * 参考链接：http://willowtreeapps.com/blog/app-development-how-to-get-the-right-layoutinflater/
  */
@@ -36,16 +35,10 @@ public class SkinInflaterFactory implements LayoutInflaterFactory {
      */
     private List<SkinItem> mSkinItems = new ArrayList<SkinItem>();
 
-    private List<AppCompatActivity> activitys = new ArrayList<>();
 
     @Override
-
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
-        if (context instanceof AppCompatActivity) {
-            AppCompatActivity activity = (AppCompatActivity) context;
-            if (!activitys.contains(activity))
-                activitys.add(activity);
-        }
+
         // 检测当前View是否有更换皮肤的需求
         boolean isSkinEnable = attrs.getAttributeBooleanValue(SkinConfig.NAMESPACE, SkinConfig.ATTR_SKIN_ENABLE, false);
         if (!isSkinEnable) {
@@ -102,7 +95,6 @@ public class SkinInflaterFactory implements LayoutInflaterFactory {
      * @param view
      */
     private void parseSkinAttr(Context context, AttributeSet attrs, View view) {
-
         List<SkinAttr> viewAttrs = new ArrayList<SkinAttr>();//存储View可更换皮肤属性的集合
         for (int i = 0; i < attrs.getAttributeCount(); i++) {//遍历当前View的属性
             String attrName = attrs.getAttributeName(i);//属性名
@@ -116,12 +108,11 @@ public class SkinInflaterFactory implements LayoutInflaterFactory {
                     String entryName = context.getResources().getResourceEntryName(id);//入口名，例如text_color_selector
                     String typeName = context.getResources().getResourceTypeName(id);//类型名，例如color、background
                     SkinAttr mSkinAttr = AttrFactory.get(attrName, id, entryName, typeName);
-
-                    L.e("parseSkinAttr", "view:" + view.getClass().getSimpleName());
-                    L.e("parseSkinAttr", "attrName:" + attrName + " | attrValue:" + attrValue);
-                    L.e("parseSkinAttr", "id:" + id);
-                    L.e("parseSkinAttr", "entryName:" + entryName);
-                    L.e("parseSkinAttr", "typeName:" + typeName);
+                    L.i("parseSkinAttr", "view:" + view.getClass().getSimpleName());
+                    L.i("parseSkinAttr", "attrName:" + attrName + " | attrValue:" + attrValue);
+                    L.i("parseSkinAttr", "id:" + id);
+                    L.i("parseSkinAttr", "entryName:" + entryName);
+                    L.i("parseSkinAttr", "typeName:" + typeName);
                     if (mSkinAttr != null) {
                         viewAttrs.add(mSkinAttr);
                     }
@@ -132,14 +123,11 @@ public class SkinInflaterFactory implements LayoutInflaterFactory {
                 }
             }
         }
-
         if (!ListUtils.isEmpty(viewAttrs)) {
             SkinItem skinItem = new SkinItem();
             skinItem.view = view;
             skinItem.attrs = viewAttrs;
-
             mSkinItems.add(skinItem);
-
             if (SkinManager.getInstance().isExternalSkin()) {//如果当前皮肤来自于外部
                 skinItem.apply();
             }

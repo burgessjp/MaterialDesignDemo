@@ -1,6 +1,7 @@
 package ren.solid.materialdesigndemo.fragment;
 
 import android.os.Environment;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,8 +30,8 @@ public class ChangeSkinFragment extends BaseFragment {
             .getExternalStorageDirectory() + File.separator;
 
     @Override
-    protected View setContentView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.fragment_chang_skin, container, false);
+    protected int setLayoutResourceID() {
+        return R.layout.fragment_chang_skin;
     }
 
     @Override
@@ -58,13 +59,13 @@ public class ChangeSkinFragment extends BaseFragment {
 
                             @Override
                             public void onSuccess() {
-                                Log.e(TAG, "loadSkinSuccess");
+                                Log.i(TAG, "loadSkinSuccess");
                                 Toast.makeText(getMContext(), "切换成功", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailed() {
-                                Log.e(TAG, "loadSkinFail");
+                                Log.i(TAG, "loadSkinFail");
                                 Toast.makeText(getMContext(), "切换失败", Toast.LENGTH_SHORT).show();
                             }
                         });

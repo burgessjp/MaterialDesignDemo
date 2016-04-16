@@ -9,7 +9,7 @@ import ren.solid.skinloader.load.SkinManager;
  * Date:2016/4/14
  * Time:10:54
  */
-public class SkinApplication extends Application {
+public class SkinBaseApplication extends Application {
 
     public void onCreate() {
         super.onCreate();

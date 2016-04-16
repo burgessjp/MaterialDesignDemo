@@ -4,13 +4,17 @@
     <string name="drawer_close">Close</string>
     <string name="title_activity_settings">Settings</string>
 
+    <string name="about_msg">此应用是基于MD的支持库实现的，是针对此支持库的一个小Demo，其中的api来源于豆瓣(首页的电影部分由于时间原因还未完成)，开发测试机为魅族，Android版本5.1。
+    \n\n 作者:_SOLID
+    \n\n 简书主页 http://www.jianshu.com/users/6725c8e8194f
+    \n\n GitHub主页 https://github.com/burgessjp
+    \n\n 新浪微博ID:_SOLID(之后的新文章会第一时间分享到新浪微博)</string>
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
+    <string name="pref_title_social_recommendations">Enable social recommendations</string><string name="pref_description_social_recommendations">Recommendations for people to contact
         based on your message history
     </string>
 

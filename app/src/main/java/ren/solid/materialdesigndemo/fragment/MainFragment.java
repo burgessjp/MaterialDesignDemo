@@ -25,8 +25,8 @@ public class MainFragment extends BaseFragment {
 
 
     @Override
-    protected View setContentView(LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+    protected int setLayoutResourceID() {
+        return R.layout.fragment_main;
     }
 
     @Override

@@ -237,7 +237,7 @@ public class SkinManager implements ISkinLoader {
 
         Drawable trueDrawable = null;
         try {
-            L.e("ttgg", "SDK_INT = " + android.os.Build.VERSION.SDK_INT);
+            L.i("SkinManager getDrawable", "SDK_INT = " + android.os.Build.VERSION.SDK_INT);
             if (android.os.Build.VERSION.SDK_INT < 22) {
                 trueDrawable = mResources.getDrawable(trueResId);
             } else {
