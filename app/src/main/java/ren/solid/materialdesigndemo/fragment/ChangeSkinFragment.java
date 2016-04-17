@@ -1,11 +1,8 @@
 package ren.solid.materialdesigndemo.fragment;
 
 import android.os.Environment;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.io.File;
@@ -46,8 +43,8 @@ public class ChangeSkinFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 File skin = new File(SKIN_DIR + SKIN_BROWN_NAME);
-                if (skin == null || !skin.exists()) {
-                    Toast.makeText(getMContext(), "请检查" + SKIN_DIR + "是否存在", Toast.LENGTH_SHORT).show();
+                if (!skin.exists()) {
+                    Toast.makeText(getMContext(), "请检查" + SKIN_DIR + SKIN_BROWN_NAME + "是否存在", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 SkinManager.getInstance().load(skin.getAbsolutePath(),
@@ -75,8 +72,8 @@ public class ChangeSkinFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 File skin = new File(SKIN_DIR + SKIN_BLACK_NAME);
-                if (skin == null || !skin.exists()) {
-                    Toast.makeText(getMContext(), "请检查" + SKIN_DIR + "是否存在", Toast.LENGTH_SHORT).show();
+                if (!skin.exists()) {
+                    Toast.makeText(getMContext(), "请检查" + SKIN_DIR + SKIN_BLACK_NAME + "是否存在", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 SkinManager.getInstance().load(skin.getAbsolutePath(),
