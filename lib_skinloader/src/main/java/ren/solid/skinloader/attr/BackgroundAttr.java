@@ -1,6 +1,7 @@
 package ren.solid.skinloader.attr;
 
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.CardView;
 import android.view.View;
 
 import ren.solid.skinloader.load.SkinManager;
@@ -17,19 +18,21 @@ public class BackgroundAttr extends SkinAttr {
     public void apply(View view) {
 
         if (RES_TYPE_NAME_COLOR.equals(attrValueTypeName)) {
-            view.setBackgroundColor(SkinManager.getInstance().getColor(attrValueRefId));
-            L.i("applyAttr", "—————————————————————————————————————————————————————————");
+
+            int color = SkinManager.getInstance().getColor(attrValueRefId);
+            if (view instanceof CardView) {//这里对CardView特殊处理下
+                CardView cardView = (CardView) view;
+                //给CardView设置背景色应该使用cardBackgroundColor，直接使用background就会没有圆角效果
+                cardView.setCardBackgroundColor(color);
+            } else {
+                view.setBackgroundColor(color);
+            }
             L.i("applyAttr", "apply as color");
-            L.i("applyAttr", "—————————————————————————————————————————————————————————");
         } else if (RES_TYPE_NAME_DRAWABLE.equals(attrValueTypeName)) {
             Drawable bg = SkinManager.getInstance().getDrawable(attrValueRefId);
             // view.setBackground(bg);
             view.setBackgroundDrawable(bg);
-            L.i("applyAttr", "—————————————————————————————————————————————————————————");
             L.i("applyAttr", "apply as drawable");
-            L.i("applyAttr", "bg.toString()  " + bg.toString());
-            L.i("applyAttr", this.attrValueRefName + " 是否可变换状态? : " + bg.isStateful());
-            L.i("applyAttr", "—————————————————————————————————————————————————————————");
         }
     }
 }

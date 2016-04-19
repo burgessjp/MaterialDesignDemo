@@ -29,8 +29,7 @@ import ren.solid.skinloader.util.L;
 public class SkinManager implements ISkinLoader {
 
     private List<ISkinUpdate> mSkinObservers;
-    private static Object synchronizedLock = new Object();//同步锁
-    private static SkinManager mInstance;
+    private static volatile SkinManager mInstance;
     private Context context;
     private Resources mResources;
     private boolean isDefaultSkin = false;//当前的皮肤是否是默认的
@@ -96,7 +95,7 @@ public class SkinManager implements ISkinLoader {
 
     public static SkinManager getInstance() {
         if (mInstance == null) {
-            synchronized (synchronizedLock) {
+            synchronized (SkinManager.class) {
                 if (mInstance == null) {
                     mInstance = new SkinManager();
                 }
