@@ -28,7 +28,7 @@ public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRV
 
     protected List<T> mBeans;
     protected Context mContext;
-    protected boolean mAnimateItems = true;
+    protected boolean mAnimateItems = false;
     protected int mLastAnimatedPosition = -1;
 
     public SolidRVBaseAdapter(Context context, List<T> beans) {
@@ -54,6 +54,7 @@ public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRV
 
     /**
      * 绑定数据到Item的控件中去
+     *
      * @param holder
      * @param bean
      */
@@ -61,6 +62,7 @@ public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRV
 
     /**
      * 取得ItemView的布局文件
+     *
      * @return
      */
     public abstract int getItemLayoutID(int viewType);

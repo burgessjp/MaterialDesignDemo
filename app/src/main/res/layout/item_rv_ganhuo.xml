@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基于material design support的开源学习项目"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="3dp">
+
+            <ImageView
+                android:id="@+id/iv_source"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/iconfont_source" />
+
+            <TextView
+                android:id="@+id/tv_source"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="6dp"
+                android:layout_toRightOf="@+id/iv_source"
+                android:text="web"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/iv_people"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_toRightOf="@+id/tv_source"
+                android:src="@drawable/iconfont_people" />
+
+            <TextView
+                android:id="@+id/tv_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="6dp"
+                android:layout_toRightOf="@+id/iv_people"
+                android:text="Andrew Liu"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/iv_time"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+
+                android:layout_toRightOf="@+id/tv_people"
+                android:src="@drawable/iconfont_time" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@+id/iv_time"
+                android:text="2016-04-18"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

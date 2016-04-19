@@ -6,7 +6,7 @@ package ren.solid.materialdesigndemo.constants;
  * Time:14:02
  * <br/>
  * <p>
- * 本Demo使用的api全部来源：豆瓣
+ * 图书与电影使用的api来源：豆瓣
  * <p>
  * https://developers.douban.com/
  */
@@ -40,4 +40,14 @@ public class Apis {
      * Example:GET /v2/movie/search?q=张艺谋 GET /v2/movie/search?tag=喜剧
      */
     public static String MovieSearch = "http://api.douban.com/v2/movie/search";
+
+    //以下api来自http://gank.io/api
+
+    //分类数据:  http://gank.io/api/data/数据类型/请求个数/第几页
+    //数据类型： 福利 | Android | iOS | 休息视频 | 拓展资源 | 前端 | all
+    //example:  http://gank.io/api/data/Android/10/1
+
+    public static String GanHuo = "http://gank.io/api/data";
+
+
 }

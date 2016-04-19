@@ -2,12 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
+
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/navigation_item_home"
             android:checked="true"
             android:icon="@drawable/iconfont_home"
             android:title="首页" />
+        <item
+            android:id="@+id/navigation_item_ganhuo"
+            android:checked="true"
+            android:icon="@drawable/iconfont_source"
+            android:title="@string/ganhuo" />
         <item
             android:id="@+id/navigation_item_blog"
             android:icon="@drawable/iconfont_blog"
@@ -17,15 +24,19 @@
             android:icon="@drawable/iconfont_custom_view"
             android:title="自定义View" />
 
-        <item
-            android:id="@+id/navigation_item_switch_theme"
-            android:icon="@drawable/iconfont_skin"
-            android:title="主题换肤" />
+        <item android:title="其他">
+            <menu>
+                <item
+                    android:id="@+id/navigation_item_switch_theme"
+                    android:icon="@drawable/iconfont_skin"
+                    android:title="主题换肤" />
 
-        <item
-            android:id="@+id/navigation_item_about"
-            android:icon="@drawable/iconfont_about"
-            android:title="关于" />
+                <item
+                    android:id="@+id/navigation_item_about"
+                    android:icon="@drawable/iconfont_about"
+                    android:title="关于" />
+            </menu>
+        </item>
     </group>
 
 </menu>

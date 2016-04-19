@@ -9,19 +9,20 @@ import java.util.List;
 
 import ren.solid.materialdesigndemo.fragment.BookFragment;
 import ren.solid.materialdesigndemo.fragment.MovieFragment;
+import ren.solid.materialdesigndemo.utils.ViewUtils;
 
 /**
  * Created by _SOLID
  * Date:2016/3/30
  * Time:11:48
  */
-public class CatViewPagerAdapter extends FragmentPagerAdapter {
+public class FindPagerAdapter extends FragmentPagerAdapter {
 
 
     private final List<String> mTitleList;
     private final Context mContext;
 
-    public CatViewPagerAdapter(Context context, List<String> titles, FragmentManager fm) {
+    public FindPagerAdapter(Context context, List<String> titles, FragmentManager fm) {
         super(fm);
         mContext = context;
         mTitleList = titles;
@@ -29,7 +30,7 @@ public class CatViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = createFrgmentByTitle(mTitleList.get(position));
+        Fragment fragment = createFragmentByTitle(mTitleList.get(position));
         return fragment;
     }
 
@@ -38,13 +39,13 @@ public class CatViewPagerAdapter extends FragmentPagerAdapter {
         return mTitleList.size();
     }
 
-    private Fragment createFrgmentByTitle(String title) {
+    private Fragment createFragmentByTitle(String title) {
 
         Fragment result = new BookFragment();//这里主要是一个防止没有找到Fragment，给一个默认
         if (title.equals("找书籍")) {
-            result = new BookFragment();
+            result = ViewUtils.createFragment(BookFragment.class,false);
         } else if (title.equals("找电影")) {
-            result = new MovieFragment();
+            result = ViewUtils.createFragment(MovieFragment.class,false);
         }
         return result;
 

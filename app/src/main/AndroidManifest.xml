@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ren.solid.materialdesigndemo" >
+    package="ren.solid.materialdesigndemo">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,8 +10,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".activity.MainActivity" >
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,10 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.BookDetailActivity" />
-        <activity
-            android:name=".activity.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.base.WebViewActivity" />
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 package ren.solid.materialdesigndemo.fragment;
 
+import android.graphics.Color;
+
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
 import ren.solid.materialdesigndemo.utils.ViewUtils;
@@ -22,7 +24,7 @@ public class CustomViewFragment extends BaseFragment {
         super.initView();
         QQHealthView qqHealthView = customFindViewById(R.id.qqhealthview);
         qqHealthView.setSteps(new int[]{100, 15280, 8900, 9200, 6500, 5660, 9450});
-        qqHealthView.setThemeColor(ViewUtils.getThemeColorPrimary(getActivity()));
+        qqHealthView.setThemeColor(Color.parseColor("#87CEEB"));
 
     }
 }

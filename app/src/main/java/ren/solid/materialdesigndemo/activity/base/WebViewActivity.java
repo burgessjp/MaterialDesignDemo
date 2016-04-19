@@ -1,11 +1,8 @@
-package ren.solid.materialdesigndemo.fragment.base;
+package ren.solid.materialdesigndemo.activity.base;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -16,40 +13,55 @@ import ren.solid.materialdesigndemo.R;
 
 /**
  * Created by _SOLID
- * Date:2016/3/31
- * Time:14:27
+ * Date:2016/4/19
+ * Time:13:03
  */
-public abstract class WebViewFragment extends BaseFragment {
+public class WebViewActivity extends BaseActivity {
+
+
+    public static String URL = "webViewUrl";
 
     protected WebView mWebView;
     protected ProgressBar mProgressBar;
+    private Toolbar mToolbar;
+    private String mUrl;
+
 
     @Override
     protected int setLayoutResourceID() {
-        return R.layout.fragment_webview;
+        return R.layout.activity_webview;
     }
 
-    /**
-     * 需要加载的Url<br/>
-     * assert中的文件：file:///android_asset/about.htm<br/>
-     * 网页： http://www.jianshu.com/users/6725c8e8194f/<br/>
-     * <p>
-     *
-     * @return
-     */
-    protected abstract String getLoadUrl();
+    @Override
+    protected void init() {
+        mUrl = getIntent().getExtras().getString(URL);
+    }
 
     @Override
     protected void initView() {
-        mProgressBar = (ProgressBar) getContentView().findViewById(R.id.progressbar);
-        mWebView = (WebView) getContentView().findViewById(R.id.webView);
+        //设置Toolbar
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("加载中...");
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);//决定左上角的图标是否可以点击
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//决定左上角图标的右侧是否有向左的小箭头
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+        mProgressBar = customFindViewById(R.id.progressbar);
+        mWebView = customFindViewById(R.id.webView);
 
         initWebViewSettings();
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.setWebChromeClient(new MyWebChromeClient());
 
         mProgressBar.setMax(100);
-        mWebView.loadUrl(getLoadUrl());
+        mWebView.loadUrl(mUrl);
 
     }
 
@@ -150,13 +162,14 @@ public abstract class WebViewFragment extends BaseFragment {
                 mProgressBar.setVisibility(View.VISIBLE);
             }
         }
-//        //获取Web页中的title用来设置自己界面中的title
-//        //当加载出错的时候，比如无网络，这时onReceiveTitle中获取的标题为 找不到该网页,
-//        //因此建议当触发onReceiveError时，不要使用获取到的title
-//        @Override
-//        public void onReceivedTitle(WebView view, String title) {
-//            MainActivity.this.setTitle(title);
-//        }
+
+        //获取Web页中的title用来设置自己界面中的title
+        //当加载出错的时候，比如无网络，这时onReceiveTitle中获取的标题为 找不到该网页,
+        //因此建议当触发onReceiveError时，不要使用获取到的title
+        @Override
+        public void onReceivedTitle(WebView view, String title) {
+            mToolbar.setTitle(title);
+        }
 //
 //        @Override
 //        public void onReceivedIcon(WebView view, Bitmap icon) {
@@ -196,5 +209,10 @@ public abstract class WebViewFragment extends BaseFragment {
 //        }
     }
 
+    @Override
+    public void onBackPressed() {
 
+        if (canGoBack()) goBack();
+        else finish();
+    }
 }
