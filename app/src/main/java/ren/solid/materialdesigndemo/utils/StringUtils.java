@@ -40,7 +40,7 @@ public class StringUtils {
         return sb.toString();
     }
 
-    public boolean isNullOrEmpty(String s) {
-        return s == null || "".equals(s.trim());
+    public static boolean isNullOrEmpty(String s) {
+        return s == null || s.length() == 0;
     }
 }

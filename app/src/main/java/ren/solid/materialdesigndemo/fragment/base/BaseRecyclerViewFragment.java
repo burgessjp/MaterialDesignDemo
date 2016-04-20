@@ -9,18 +9,23 @@ import android.widget.LinearLayout;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.io.File;
 import java.util.List;
 
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.adapter.base.SolidRVBaseAdapter;
+import ren.solid.materialdesigndemo.utils.FileUtils;
 import ren.solid.materialdesigndemo.utils.HttpUtils;
+import ren.solid.materialdesigndemo.utils.NetworkUtils;
+import ren.solid.materialdesigndemo.utils.StringUtils;
+import ren.solid.materialdesigndemo.utils.ToastUtils;
 
 /**
  * Created by _SOLID
  * Date:2016/4/18
  * Time:17:36
- *
- * common list data display fragment
+ * <p>
+ * common fragment for list data display ,and you can extends this fragment for everywhere you want to display list data
  */
 public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
 
@@ -74,47 +79,63 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
         mBtnReload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //switchActionAndLoadData(ACTION_REFRESH);
                 mLLReloadWarp.setVisibility(View.GONE);
                 mRecyclerView.setRefreshing(true);
-
             }
         });
-
     }
 
 
     @Override
     protected void initData() {
         mRecyclerView.setRefreshing(true);
-
     }
 
     private void loadData() {
         final String reqUrl = getUrl(mCurrentPageIndex);
+        if (!NetworkUtils.isNetworkConnected(getMContext())) {//no network
+            String result = obtainOfflineData(getUrl(1));
+            onDataSuccessReceived(result);
+            ToastUtils.getInstance().showToast("当前无网络连接");
+        } else
+            HttpUtils.getInstance().loadString(reqUrl, new HttpUtils.HttpCallBack() {
+                @Override
+                public void onLoading() {
+                    Log.i(TAG, "onLoading");
+                }
 
-        HttpUtils.getInstance().loadString(reqUrl, new HttpUtils.HttpCallBack() {
-            @Override
-            public void onLoading() {
-                Log.i(TAG, "onLoading");
-            }
+                @Override
+                public void onSuccess(String result) {
+                    Log.i(TAG, "onSuccess:" + result);
+                    if (mCurrentAction == ACTION_REFRESH) {
+                        storeOfflineData(getUrl(1), result);
+                    }
+                    onDataSuccessReceived(result);
+                }
 
-            @Override
-            public void onSuccess(String result) {
-                Log.i(TAG, "onSuccess:" + result);
-                mLLReloadWarp.setVisibility(View.GONE);
-                List<T> list = parseData(result);
-                mAdapter.addAll(list);
-                loadComplete();
-            }
+                @Override
+                public void onError(Exception e) {
+                    onDataErrorReceived();
+                }
+            });
+    }
 
-            @Override
-            public void onError(Exception e) {
-                Log.i(TAG, "onError:" + e.getMessage());
-                mLLReloadWarp.setVisibility(View.VISIBLE);
-                loadComplete();
-            }
-        });
+    private void onDataErrorReceived() {
+        Log.i(TAG, "onDataErrorReceived");
+        mLLReloadWarp.setVisibility(View.VISIBLE);
+        loadComplete();
+    }
+
+    private void onDataSuccessReceived(String result) {
+        Log.i(TAG, "onDataSuccessReceived:" + result);
+        if (!StringUtils.isNullOrEmpty(result)) {
+            List<T> list = parseData(result);
+            mAdapter.addAll(list);
+            loadComplete();
+            mLLReloadWarp.setVisibility(View.GONE);
+        } else {
+            onDataErrorReceived();
+        }
     }
 
     private void loadComplete() {
@@ -141,7 +162,47 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
     }
 
     /**
-     * 请求的URL
+     * store offline data
+     *
+     * @param url
+     * @param result
+     */
+    public void storeOfflineData(String url, String result) {
+        try {
+            FileUtils.writeFile(getOfflineDir(url), result, "UTF-8", true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * obtain offline data
+     *
+     * @param url
+     * @return
+     */
+    public String obtainOfflineData(String url) {
+        String result = null;
+        try {
+            result = FileUtils.readFile(getOfflineDir(url), "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * get the dir of the offline data
+     *
+     * @param url
+     * @return
+     */
+    protected String getOfflineDir(String url) {
+        return FileUtils.getCacheDir(getMContext()) + File.separator + "offline_gan_huo_cache" + File.separator + StringUtils.md5(url);
+    }
+
+    /**
+     * the url of request
      *
      * @param mCurrentPageIndex
      * @return
@@ -149,14 +210,14 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
     protected abstract String getUrl(int mCurrentPageIndex);
 
     /**
-     * 设置RecyclerView的适配器
+     * set RecyclerView's Adapter
      *
      * @return
      */
     protected abstract SolidRVBaseAdapter<T> setAdapter();
 
     /**
-     * RecyclerView的布局方式
+     * set RecyclerView's LayoutManager
      *
      * @return
      */

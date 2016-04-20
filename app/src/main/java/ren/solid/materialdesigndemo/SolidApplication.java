@@ -1,5 +1,6 @@
 package ren.solid.materialdesigndemo;
 
+import ren.solid.materialdesigndemo.utils.ToastUtils;
 import ren.solid.skinloader.base.SkinBaseApplication;
 
 /**
@@ -14,6 +15,7 @@ public class SolidApplication extends SkinBaseApplication {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        ToastUtils.init(this);
     }
 
     public static SolidApplication getInstance() {

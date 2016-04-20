@@ -5,10 +5,15 @@ import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Created by _SOLID
@@ -19,6 +24,52 @@ public class FileUtils {
 
     private static String TAG = "FileUtils";
     private static String FILE_WRITING_ENCODING = "UTF-8";
+    private static String FILE_READING_ENCODING = "UTF-8";
+
+    public static String readFile(String _sFileName, String _sEncoding) throws Exception {
+        StringBuffer buffContent = null;
+        String sLine;
+
+        FileInputStream fis = null;
+        BufferedReader buffReader = null;
+        if (_sEncoding == null || "".equals(_sEncoding)) {
+            _sEncoding = FILE_READING_ENCODING;
+        }
+
+        try {
+            fis = new FileInputStream(_sFileName);
+            buffReader = new BufferedReader(new InputStreamReader(fis,
+                    _sEncoding));
+            boolean zFirstLine = "UTF-8".equalsIgnoreCase(_sEncoding);
+            while ((sLine = buffReader.readLine()) != null) {
+                if (buffContent == null) {
+                    buffContent = new StringBuffer();
+                } else {
+                    buffContent.append("\n");
+                }
+                if (zFirstLine) {
+                    sLine = removeBomHeaderIfExists(sLine);
+                    zFirstLine = false;
+                }
+                buffContent.append(sLine);
+            }// end while
+            return (buffContent == null ? "" : buffContent.toString());
+        } catch (FileNotFoundException ex) {
+            throw new Exception("要读取的文件没有找到!", ex);
+        } catch (IOException ex) {
+            throw new Exception("读取文件时错误!", ex);
+        } finally {
+            // 增加异常时资源的释放
+            try {
+                if (buffReader != null)
+                    buffReader.close();
+                if (fis != null)
+                    fis.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 
     public static File writeFile(String path, String content, String encoding, boolean isOverride) throws Exception {
         if (TextUtils.isEmpty(encoding)) {
@@ -72,6 +123,32 @@ public class FileUtils {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * 移除字符串中的BOM前缀
+     *
+     * @param _sLine 需要处理的字符串
+     * @return 移除BOM后的字符串.
+     */
+    private static String removeBomHeaderIfExists(String _sLine) {
+        if (_sLine == null) {
+            return null;
+        }
+        String line = _sLine;
+        if (line.length() > 0) {
+            char ch = line.charAt(0);
+            // 使用while是因为用一些工具看到过某些文件前几个字节都是0xfffe.
+            // 0xfeff,0xfffe是字节序的不同处理.JVM中,一般是0xfeff
+            while ((ch == 0xfeff || ch == 0xfffe)) {
+                line = line.substring(1);
+                if (line.length() == 0) {
+                    break;
+                }
+                ch = line.charAt(0);
+            }
+        }
+        return line;
     }
 
     /**
