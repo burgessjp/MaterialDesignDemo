@@ -1,23 +1,13 @@
 package ren.solid.materialdesigndemo.fragment;
 
-import android.os.RecoverySystem;
+import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.widget.TableLayout;
-import android.widget.TextView;
-
-import java.io.UnsupportedEncodingException;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.util.Log;
 
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.adapter.GanHuoPagerAdapter;
-import ren.solid.materialdesigndemo.constants.Apis;
 import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
-import ren.solid.materialdesigndemo.utils.CharsetUtils;
-import ren.solid.materialdesigndemo.utils.HttpUtils;
 
 /**
  * Created by _SOLID
@@ -25,6 +15,14 @@ import ren.solid.materialdesigndemo.utils.HttpUtils;
  * Time:15:30
  */
 public class GanHuoFragment extends BaseFragment {
+
+    private static  String TAG="GanHuoFragment";
+
+    private ViewPager mViewPager;
+    private GanHuoPagerAdapter mAdapter;
+    private TabLayout mTabLayout;
+    private String[] mTitles;
+
     @Override
     protected int setLayoutResourceID() {
         return R.layout.fragment_gan_huo;
@@ -33,33 +31,39 @@ public class GanHuoFragment extends BaseFragment {
     @Override
     protected void initView() {
 
-        String[] titles = new String[]{"all", "福利", "Android", "iOS", " 休息视频", "拓展资源", "前端"};
-        TabLayout mTabLayout = customFindViewById(R.id.sliding_tabs);
-        ViewPager mViewPager = customFindViewById(R.id.viewpager);
-        mViewPager.setAdapter(new GanHuoPagerAdapter(getChildFragmentManager(), titles));
-        for (int i = 0; i < titles.length; i++) {
-            mTabLayout.addTab(mTabLayout.newTab().setText(titles[i]));
+        mTitles = new String[]{"all", "休息视频", "福利", "Android", "iOS", "拓展资源", "前端", "瞎推荐"};
+        mTabLayout = customFindViewById(R.id.sliding_tabs);
+        mViewPager = customFindViewById(R.id.viewpager);
+        mAdapter = new GanHuoPagerAdapter(getChildFragmentManager(), mTitles);
+
+        for (int i = 0; i < mTitles.length; i++) {
+            mTabLayout.addTab(mTabLayout.newTab().setText(mTitles[i]));
         }
-        mTabLayout.setupWithViewPager(mViewPager);
 
-
-        HttpUtils.getInstance().loadString("http://gank.io/api/data/%E7%A6%8F%E5%88%A9/10/1", new HttpUtils.HttpCallBack() {
-            @Override
-            public void onLoading() {
-
-            }
-
-            @Override
-            public void onSuccess(String result) {
-                result = CharsetUtils.decodeUnicode(result);
-            }
-
-            @Override
-            public void onError(Exception e) {
-
-            }
-        });
+        new SetAdapterTask().execute();
+        dynamicAddSkinView(mTabLayout, "tabIndicatorColor", R.color.colorAccent);
     }
 
 
+    private class SetAdapterTask extends AsyncTask<Void, Void, Void> {
+        protected Void doInBackground(Void... params) {
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+
+            if (mAdapter != null) {
+                mViewPager.setAdapter(mAdapter);
+                mTabLayout.setupWithViewPager(mViewPager);
+            }
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mAdapter = new GanHuoPagerAdapter(getChildFragmentManager(), mTitles);
+        Log.i(TAG,"onResume");
+    }
 }

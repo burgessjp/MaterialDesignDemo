@@ -6,6 +6,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/windowBackground"
     android:fitsSystemWindows="true">
 
     <!--内容区-->
@@ -13,8 +14,8 @@
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        skin:enable="true"
-        android:background="@color/windowBackground">
+        android:background="@color/windowBackground"
+        skin:enable="true">
 
         <include
             android:id="@+id/appbar"

@@ -2,9 +2,11 @@ package ren.solid.materialdesigndemo.utils;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.view.LayoutInflater;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -156,8 +158,11 @@ public class HttpUtils {
      * @param iv  ImageView
      */
     public void loadImage(String url, ImageView iv) {
-        Picasso.with(SolidApplication.getInstance()).load(url).fit().into(iv);
-        loadImageWithHolder(url, iv, R.drawable.default_load_img);
+        loadImage(url, iv, false);
+    }
+
+    public void loadImage(String url, ImageView iv, boolean isCenterCrop) {
+        loadImageWithHolder(url, iv, R.drawable.default_load_img, isCenterCrop);
     }
 
     /**
@@ -167,8 +172,13 @@ public class HttpUtils {
      * @param iv               ImageView
      * @param placeholderResID default image
      */
-    public void loadImageWithHolder(String url, ImageView iv, int placeholderResID) {
+    public void loadImageWithHolder(String url, ImageView iv, int placeholderResID, boolean isCenterCrop) {
         Picasso.with(SolidApplication.getInstance()).load(url).placeholder(placeholderResID).fit().into(iv);
+        RequestCreator creator = Picasso.with(SolidApplication.getInstance()).load(url).placeholder(R.drawable.default_load_img);
+        if (isCenterCrop) {
+            creator.centerCrop();
+        }
+        creator.fit().into(iv);
     }
 
 

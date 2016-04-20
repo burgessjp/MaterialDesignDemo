@@ -63,6 +63,8 @@ public class WebViewActivity extends BaseActivity {
         mProgressBar.setMax(100);
         mWebView.loadUrl(mUrl);
 
+        dynamicAddSkinEnableView(mToolbar, "background", R.color.colorPrimary);
+
     }
 
     private void initWebViewSettings() {

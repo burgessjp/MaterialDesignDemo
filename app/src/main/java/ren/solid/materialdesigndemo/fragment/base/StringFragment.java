@@ -1,4 +1,4 @@
-package ren.solid.materialdesigndemo.fragment;
+package ren.solid.materialdesigndemo.fragment.base;
 
 import android.view.LayoutInflater;
 import android.view.View;

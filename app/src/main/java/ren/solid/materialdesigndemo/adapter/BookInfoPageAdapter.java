@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ren.solid.materialdesigndemo.bean.BookBean;
-import ren.solid.materialdesigndemo.fragment.StringFragment;
+import ren.solid.materialdesigndemo.fragment.base.StringFragment;
 import ren.solid.materialdesigndemo.utils.ViewUtils;
 
 /**

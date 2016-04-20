@@ -1,6 +1,7 @@
 package ren.solid.materialdesigndemo.fragment.base;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,8 +19,12 @@ import ren.solid.materialdesigndemo.utils.HttpUtils;
  * Created by _SOLID
  * Date:2016/4/18
  * Time:17:36
+ *
+ * common list data display fragment
  */
 public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
+
+    private static String TAG = "BaseRecyclerViewFragment";
 
     private static final int ACTION_REFRESH = 1;
     private static final int ACTION_LOAD_MORE = 2;
@@ -69,9 +74,9 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
         mBtnReload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchActionAndLoadData(ACTION_REFRESH);
-                v.setVisibility(View.GONE);
-                // mRecyclerView.setRefreshing(true);
+                //switchActionAndLoadData(ACTION_REFRESH);
+                mLLReloadWarp.setVisibility(View.GONE);
+                mRecyclerView.setRefreshing(true);
 
             }
         });
@@ -91,31 +96,32 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
         HttpUtils.getInstance().loadString(reqUrl, new HttpUtils.HttpCallBack() {
             @Override
             public void onLoading() {
-
+                Log.i(TAG, "onLoading");
             }
 
             @Override
             public void onSuccess(String result) {
+                Log.i(TAG, "onSuccess:" + result);
                 mLLReloadWarp.setVisibility(View.GONE);
                 List<T> list = parseData(result);
                 mAdapter.addAll(list);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                    Snackbar.make(mRecyclerView, "数据转换异常:" + e.getMessage(), Snackbar.LENGTH_SHORT).show();
-//                }
-
-
-                if (mCurrentAction == ACTION_REFRESH)
-                    mRecyclerView.refreshComplete();
-                if (mCurrentAction == ACTION_LOAD_MORE)
-                    mRecyclerView.loadMoreComplete();
+                loadComplete();
             }
 
             @Override
             public void onError(Exception e) {
+                Log.i(TAG, "onError:" + e.getMessage());
                 mLLReloadWarp.setVisibility(View.VISIBLE);
+                loadComplete();
             }
         });
+    }
+
+    private void loadComplete() {
+        if (mCurrentAction == ACTION_REFRESH)
+            mRecyclerView.refreshComplete();
+        if (mCurrentAction == ACTION_LOAD_MORE)
+            mRecyclerView.loadMoreComplete();
     }
 
     protected abstract List<T> parseData(String result);

@@ -2,16 +2,11 @@ package ren.solid.materialdesigndemo.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -40,8 +35,7 @@ import ren.solid.materialdesigndemo.utils.HttpUtils;
 public class BookFragment extends BaseFragment implements View.OnClickListener {
 
     private static final String TAG = "BookFragmentTAG";
-    private static final int ACTION_INIT = 0;
-    private static final int ACTION_REFLESH = 1;
+    private static final int ACTION_REFRESH = 1;
     private static final int ACTION_LOAD_MORE = 2;
 
 
@@ -51,7 +45,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
     private EditText mETInput;
     private AlertDialog mInputDialog;
 
-    private int mCurrentAction = ACTION_INIT;
+    private int mCurrentAction = ACTION_REFRESH;
     private String mCurrentKeyWord;
     private int mPageSize = 20;
     private int mCurrentPageIndex = 1;
@@ -73,7 +67,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
         mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                switchAction(ACTION_REFLESH);
+                switchAction(ACTION_REFRESH);
             }
 
             @Override
@@ -94,7 +88,8 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
         Random random = new Random();
         int n = random.nextInt(keyWords.length);
         mCurrentKeyWord = keyWords[n];
-        switchAction(ACTION_INIT);
+        //switchAction(ACTION_REFRESH);
+        mRecyclerView.setRefreshing(true);
 
     }
 
@@ -104,13 +99,10 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
         HttpUtils.getInstance().loadString(reqUrl, new HttpUtils.HttpCallBack() {
             @Override
             public void onLoading() {
-                if (mCurrentAction == ACTION_INIT)
-                    getProgressDialog().show();
             }
 
             @Override
             public void onSuccess(String result) {
-                getProgressDialog().hide();
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     Gson gson = new Gson();
@@ -119,7 +111,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
                             new TypeToken<List<BookBean>>() {
                             }.getType());
                     mBookAdapter.addAll(list);
-                    if (mCurrentAction == ACTION_REFLESH)
+                    if (mCurrentAction == ACTION_REFRESH)
                         mRecyclerView.refreshComplete();
                     if (mCurrentAction == ACTION_LOAD_MORE)
                         mRecyclerView.loadMoreComplete();
@@ -138,11 +130,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
     private void switchAction(int action) {
         mCurrentAction = action;
         switch (mCurrentAction) {
-            case ACTION_INIT:
-                mBookAdapter.clear();
-                mCurrentPageIndex = 1;
-                break;
-            case ACTION_REFLESH:
+            case ACTION_REFRESH:
                 mBookAdapter.clear();
                 mCurrentPageIndex = 1;
                 break;
@@ -180,7 +168,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
                 if ("".equals(mCurrentKeyWord)) {//如果用户输入的关键字为空，我们就按照最开始的数据加载方式加载
                     initData();
                 } else {
-                    switchAction(ACTION_INIT);
+                    switchAction(ACTION_REFRESH);
                 }
                 mETInput.setText("");
 

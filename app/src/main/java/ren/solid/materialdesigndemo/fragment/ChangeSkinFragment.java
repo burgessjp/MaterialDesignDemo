@@ -9,6 +9,7 @@ import java.io.File;
 
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
+import ren.solid.materialdesigndemo.utils.FileUtils;
 import ren.solid.skinloader.listener.ILoaderListener;
 import ren.solid.skinloader.load.SkinManager;
 
@@ -21,14 +22,18 @@ public class ChangeSkinFragment extends BaseFragment {
 
     private static String TAG = "ChangeSkinFragment";
 
-    private static final String SKIN_BROWN_NAME = "skin_brown.skin";
-    private static final String SKIN_BLACK_NAME = "skin_black.skin";
-    private static final String SKIN_DIR = Environment
-            .getExternalStorageDirectory() + File.separator;
+    private static String SKIN_BROWN_NAME = "skin_brown.skin";
+    private static String SKIN_BLACK_NAME = "skin_black.skin";
+    private static String SKIN_DIR;
 
     @Override
     protected int setLayoutResourceID() {
         return R.layout.fragment_chang_skin;
+    }
+
+    @Override
+    protected void init() {
+        SKIN_DIR = FileUtils.getSkinDirPath(getMContext());
     }
 
     @Override
@@ -37,14 +42,17 @@ public class ChangeSkinFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 SkinManager.getInstance().restoreDefaultTheme();
+
             }
         });
         customFindViewById(R.id.ll_brown).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File skin = new File(SKIN_DIR + SKIN_BROWN_NAME);
+                String skinFullName = SKIN_DIR + File.separator + "skin_brown.skin";
+                FileUtils.moveRawToDir(getMContext(), "skin_brown.skin", skinFullName);
+                File skin = new File(skinFullName);
                 if (!skin.exists()) {
-                    Toast.makeText(getMContext(), "请检查" + SKIN_DIR + SKIN_BROWN_NAME + "是否存在", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getMContext(), "请检查" + skinFullName + "是否存在", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 SkinManager.getInstance().load(skin.getAbsolutePath(),
@@ -71,9 +79,11 @@ public class ChangeSkinFragment extends BaseFragment {
         customFindViewById(R.id.ll_black).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File skin = new File(SKIN_DIR + SKIN_BLACK_NAME);
+                String skinFullName = SKIN_DIR + File.separator + "skin_black.skin";
+                FileUtils.moveRawToDir(getMContext(), "skin_black.skin", skinFullName);
+                File skin = new File(skinFullName);
                 if (!skin.exists()) {
-                    Toast.makeText(getMContext(), "请检查" + SKIN_DIR + SKIN_BLACK_NAME + "是否存在", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getMContext(), "请检查" + skinFullName + "是否存在", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 SkinManager.getInstance().load(skin.getAbsolutePath(),
