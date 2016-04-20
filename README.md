@@ -31,6 +31,8 @@
 
 ###效果展示图
 
+![干货与福利](http://upload-images.jianshu.io/upload_images/623504-4ec5308bcd42ff50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ![Demo换肤效果图](http://upload-images.jianshu.io/upload_images/623504-0c8a0c72d3a173ed.gif?imageMogr2/auto-orient/strip)
 ----
 
