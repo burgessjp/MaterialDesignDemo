@@ -31,11 +31,17 @@
 
 ###效果展示图
 
+**2016年4月21号更新（增加干货与福利）：**
+
 ![干货与福利](http://upload-images.jianshu.io/upload_images/623504-4ec5308bcd42ff50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+**2016年4月17号更新（增加主题换肤）：**
+
 ![Demo换肤效果图](http://upload-images.jianshu.io/upload_images/623504-0c8a0c72d3a173ed.gif?imageMogr2/auto-orient/strip)
+
 ----
 
+**初始提交（MD介绍）**
 
 ![](http://upload-images.jianshu.io/upload_images/623504-8880b55a4190b6b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
