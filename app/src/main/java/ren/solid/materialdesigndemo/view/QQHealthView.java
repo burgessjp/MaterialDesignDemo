@@ -1,5 +1,7 @@
 package ren.solid.materialdesigndemo.view;
 
+import android.animation.AnimatorSet;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,6 +28,8 @@ import ren.solid.materialdesigndemo.utils.ViewUtils;
  * Created by _SOLID
  * Date:2016/4/10
  * Time:10:35
+ * <p/>
+ * update:加入动画，动画由简书网友Aracys提供
  */
 public class QQHealthView extends View {
 
@@ -60,6 +64,10 @@ public class QQHealthView extends View {
     private int mMaxStep;
     private int mAverageStep;
     private int mTotalSteps;
+
+    private int step = 25;
+    private float percent = 0.5f;
+
     private Paint mAvatarPaint;
 
     public QQHealthView(Context context) {
@@ -121,6 +129,37 @@ public class QQHealthView extends View {
         //头像画笔
         mAvatarPaint = new Paint();
         mAvatarPaint.setAntiAlias(true);
+
+        //加入动画
+        AnimatorSet animatorSet = new AnimatorSet();
+
+        //步数的动画
+        ValueAnimator stepAnimator = ValueAnimator.ofInt(0, mSteps[mSteps.length - 1]);
+        stepAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                step = (int) animation.getAnimatedValue();
+                invalidate();
+            }
+        });
+//        stepAnimator.setDuration(1000);
+//        stepAnimator.start();
+
+        //圆环动画
+        ValueAnimator percentAnimator = ValueAnimator.ofFloat(0, 1);
+        percentAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                percent = (float) animation.getAnimatedValue();
+                invalidate();
+            }
+        });
+        // percentAnimator.setDuration(1000);
+        // percentAnimator.start();
+        animatorSet.setDuration(1000);
+        animatorSet.playTogether(stepAnimator, percentAnimator);
+        animatorSet.start();
+
 
     }
 
@@ -267,12 +306,13 @@ public class QQHealthView extends View {
         float xPos;
         float yPos;
         //1.绘制最下层背景
+        mBackgroundPaint.setColor(mThemeColor);
         drawBelowBackground(0, 0, mWidth, mHeight, mBackgroundCorner, canvas, mBackgroundPaint);
         //2.绘制上面的背景
         mBackgroundPaint.setColor(mUpBackgroundColor);
         drawUpBackground(0, 0, mWidth, mWidth, mBackgroundCorner, canvas, mBackgroundPaint);
         //3.绘制圆弧
-        canvas.drawArc(mArcRect, 120, 300, false, mArcPaint);
+        canvas.drawArc(mArcRect, 120, 300 * percent, false, mArcPaint);
         //4.绘制圆弧里面的文字
         xPos = mArcCenterX;
         yPos = (int) (mArcCenterY - 40.f / 525.f * mHeight);
@@ -283,7 +323,7 @@ public class QQHealthView extends View {
         mTextPaint.setTextAlign(Paint.Align.CENTER);
         mTextPaint.setTextSize(42.f / 450.f * mWidth);
         mTextPaint.setColor(mThemeColor);
-        canvas.drawText(mSteps[mSteps.length - 1] + "", mArcCenterX, mArcCenterY, mTextPaint);
+        canvas.drawText(step + "", mArcCenterX, mArcCenterY, mTextPaint);
         yPos = (int) (mArcCenterY + 50.f / 525.f * mHeight);
         mTextPaint.setColor(Color.parseColor("#C1C1C1"));
         mTextPaint.setTextSize(13.f / 450.f * mWidth);
