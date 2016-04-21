@@ -26,6 +26,7 @@ import ren.solid.materialdesigndemo.bean.BookBean;
 import ren.solid.materialdesigndemo.constants.Apis;
 import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
 import ren.solid.materialdesigndemo.utils.HttpUtils;
+import ren.solid.materialdesigndemo.utils.ToastUtils;
 
 /**
  * Created by _SOLID
@@ -111,10 +112,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
                             new TypeToken<List<BookBean>>() {
                             }.getType());
                     mBookAdapter.addAll(list);
-                    if (mCurrentAction == ACTION_REFRESH)
-                        mRecyclerView.refreshComplete();
-                    if (mCurrentAction == ACTION_LOAD_MORE)
-                        mRecyclerView.loadMoreComplete();
+                    loadComplete();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -123,8 +121,17 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
             @Override
             public void onError(Exception e) {
                 Log.e(TAG, "onError:" + e);
+                ToastUtils.getInstance().showToast(e.getMessage());
+                loadComplete();
             }
         });
+    }
+
+    private void loadComplete() {
+        if (mCurrentAction == ACTION_REFRESH)
+            mRecyclerView.refreshComplete();
+        if (mCurrentAction == ACTION_LOAD_MORE)
+            mRecyclerView.loadMoreComplete();
     }
 
     private void switchAction(int action) {

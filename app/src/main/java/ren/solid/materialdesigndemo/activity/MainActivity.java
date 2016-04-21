@@ -34,18 +34,19 @@ public class MainActivity extends BaseActivity {
 
     private FragmentManager mFragmentManager;
     private Fragment mCurrentFragment;
+    private MenuItem mPreMenuItem;
 
-    private int mCurrentSelectMenuIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null)
-            Log.i(TAG, "NULL mCurrentSelectMenuIndex:" + mCurrentSelectMenuIndex);
+            Log.i(TAG, "NULL");
         else {
-            mCurrentSelectMenuIndex = savedInstanceState.getInt("currentSelectMenuIndex", 0);
-            Log.i(TAG, "NOT NULL mCurrentSelectMenuIndex:" + mCurrentSelectMenuIndex);
+            Log.i(TAG, "NOT NULL");
         }
+
+
     }
 
     @Override
@@ -82,32 +83,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("currentSelectMenuIndex", mCurrentSelectMenuIndex);
         Log.i(TAG, "onSaveInstanceState");
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         //super.onRestoreInstanceState(savedInstanceState);
-        Log.i(TAG,"onRestoreInstanceState");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy");
+        Log.i(TAG, "onRestoreInstanceState");
     }
 
     //init the default checked fragment
@@ -116,16 +98,19 @@ public class MainActivity extends BaseActivity {
         mCurrentFragment = ViewUtils.createFragment(MainFragment.class);
 
         mFragmentManager.beginTransaction().add(R.id.frame_content, mCurrentFragment).commit();
-        mNavigationView.getMenu().getItem(mCurrentSelectMenuIndex).setChecked(true);
-//
-//        Log.i(TAG, "mNavigationView.getMenu().getItem(0)" + mNavigationView.getMenu().getItem(0).isChecked());
-//        Log.i(TAG, "mNavigationView.getMenu().getItem(1)" + mNavigationView.getMenu().getItem(1).isChecked());
+        mPreMenuItem = mNavigationView.getMenu().getItem(0);
+        mPreMenuItem.setChecked(true);
     }
 
     private void setNavigationViewItemClickListener() {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
+                if (null != mPreMenuItem) {
+                    mPreMenuItem.setChecked(false);
+                }
                 switch (item.getItemId()) {
                     case R.id.navigation_item_home:
                         mToolbar.setTitle("首页");
@@ -156,6 +141,7 @@ public class MainActivity extends BaseActivity {
                 }
                 item.setChecked(true);
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
+                mPreMenuItem = item;
                 return false;
             }
         });

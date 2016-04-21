@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import ren.solid.materialdesigndemo.R;
-import ren.solid.materialdesigndemo.activity.MainActivity;
 import ren.solid.skinloader.base.SkinBaseActivity;
 
 /**
@@ -14,12 +12,9 @@ import ren.solid.skinloader.base.SkinBaseActivity;
  * Time:9:40
  */
 public abstract class BaseActivity extends SkinBaseActivity {
-
-    public static int mTheme = R.style.BrownTheme;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // setTheme(mTheme);
         super.onCreate(savedInstanceState);
         setContentView(setLayoutResourceID());
         init();
@@ -59,12 +54,4 @@ public abstract class BaseActivity extends SkinBaseActivity {
 
     }
 
-    public void changeTheme(int theme) {
-        mTheme = theme;
-        Intent intent = new Intent(this, MainActivity.class);
-        finish();
-        overridePendingTransition(0, R.anim.activity_close);
-        startActivity(intent);
-        overridePendingTransition(R.anim.activity_open, 0);
-    }
 }

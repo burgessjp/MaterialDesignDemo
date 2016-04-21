@@ -40,7 +40,6 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
 
     private SolidRVBaseAdapter<T> mAdapter;
 
-
     private int mCurrentAction = ACTION_REFRESH;
     private int mCurrentPageIndex = 1;
 
@@ -106,8 +105,7 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
 
                 @Override
                 public void onSuccess(String result) {
-                    Log.i(TAG, "onSuccess:" + result);
-                    if (mCurrentAction == ACTION_REFRESH) {
+                    if (mCurrentAction == ACTION_REFRESH) {//store the first page data
                         storeOfflineData(getUrl(1), result);
                     }
                     onDataSuccessReceived(result);
