@@ -2,18 +2,17 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/white</item>
         <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="actionOverflowButtonStyle">@style/ActionButton.Overflow.App</item>
     </style>
 
-    <style name="BrownTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">#6d4c41</item>
-        <item name="colorPrimaryDark">#4e342e</item>
-        <item name="colorAccent">#795548</item>
+    <style name="ActionButton.Overflow.App" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@mipmap/ic_menu_overflow</item>
     </style>
+
 
 </resources>

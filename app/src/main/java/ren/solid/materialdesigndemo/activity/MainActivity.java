@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import ren.solid.materialdesigndemo.R;
@@ -65,13 +66,18 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout = customFindViewById(R.id.drawer_layout);
         mNavigationView = customFindViewById(R.id.navigation_view);
 
+
         mToolbar.setTitle("首页");
+
         //这句一定要在下面几句之前调用，不然就会出现点击无反应
         setSupportActionBar(mToolbar);
+
         //ActionBarDrawerToggle配合Toolbar，实现Toolbar上菜单按钮开关效果。
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mToolbar.setNavigationIcon(R.mipmap.ic_drawer_home);
+
         setNavigationViewItemClickListener();
         initDefaultFragment();
         dynamicAddSkinEnableView(mToolbar, "background", R.color.colorPrimary);
@@ -159,6 +165,29 @@ public class MainActivity extends BaseActivity {
         }
         mCurrentFragment = to;
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main_toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private long lastBackKeyDownTick = 0;
     public static final long MAX_DOUBLE_BACK_DURATION = 1500;

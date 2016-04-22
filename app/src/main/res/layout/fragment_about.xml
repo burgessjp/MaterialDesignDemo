@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:skin="http://schemas.android.com/android/skin"
     android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical"
+
         skin:enable="true">
 
         <de.hdodenhof.circleimageview.CircleImageView

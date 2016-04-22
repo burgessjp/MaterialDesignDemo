@@ -1,1 +1,3 @@
-include ':app', ':lib_skinloader', ':skin_brown', ':skin_black','xrecyclerview'
+include ':app', ':lib_skinloader', ':skin_brown', ':skin_black',':xrecyclerview','photoview'
+project(':xrecyclerview').projectDir = new File('ThirdLibrary/xrecyclerview')
+project(':photoview').projectDir = new File('ThirdLibrary/photoview')

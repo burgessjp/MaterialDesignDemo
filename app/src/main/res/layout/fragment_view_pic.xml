@@ -2,14 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/windowBackground"
+    android:gravity="center"
     android:orientation="vertical">
 
-    <include layout="@layout/tablayout" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+    <uk.co.senab.photoview.PhotoView
+        android:id="@+id/photo_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 </LinearLayout>

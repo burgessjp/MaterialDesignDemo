@@ -1,7 +1,6 @@
 package ren.solid.materialdesigndemo.fragment;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,11 +13,11 @@ import com.google.gson.reflect.TypeToken;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import ren.solid.materialdesigndemo.R;
+import ren.solid.materialdesigndemo.activity.ViewPicActivity;
 import ren.solid.materialdesigndemo.activity.base.WebViewActivity;
 import ren.solid.materialdesigndemo.adapter.base.SolidRVBaseAdapter;
 import ren.solid.materialdesigndemo.bean.GanHuoBean;
@@ -76,19 +75,6 @@ public class GanHuoListFragment extends BaseRecyclerViewFragment {
                 holder.getView(R.id.tv_desc).setVisibility(View.GONE);
                 holder.getView(R.id.iv_img).setVisibility(View.GONE);
                 holder.getView(R.id.fl_head_date_wrap).setVisibility(View.GONE);
-//                int flag = 0;
-//                if (holder.itemView.getTag() != null) {
-//                    flag = (int) holder.itemView.getTag();
-//                }
-//                if ((!mPreDate.equals(bean.getPublishedAt()) && flag == 0) || flag == 2) {
-//                    holder.getView(R.id.fl_head_date_wrap).setVisibility(View.VISIBLE);
-//                    holder.setText(R.id.tv_head_date, bean.getPublishedAt().substring(0, 10));
-//                    mPreDate = bean.getPublishedAt();
-//                    holder.itemView.setTag(2);
-//                } else {
-//                    holder.itemView.setTag(1);
-//                }
-
 
                 if (bean.getUrl().endsWith(".jpg")) {//if it's image
                     holder.getView(R.id.iv_img).setVisibility(View.VISIBLE);
@@ -103,7 +89,7 @@ public class GanHuoListFragment extends BaseRecyclerViewFragment {
                 holder.setText(R.id.tv_source, bean.getSource());
                 holder.setText(R.id.tv_people, bean.getWho());
                 holder.setText(R.id.tv_time, bean.getPublishedAt().substring(0, 10));
-                holder.setText(R.id.tv_tag,bean.getType());
+                holder.setText(R.id.tv_tag, bean.getType());
             }
 
             @Override
@@ -113,9 +99,18 @@ public class GanHuoListFragment extends BaseRecyclerViewFragment {
 
             @Override
             protected void onItemClick(int position) {
-                Intent intent = new Intent(getMContext(), WebViewActivity.class);
-                intent.putExtra(WebViewActivity.URL, mBeans.get(position - 1).getUrl());
-                getMContext().startActivity(intent);
+
+                String url=mBeans.get(position - 1).getUrl();
+                if (!url.endsWith(".jpg")) {
+                    Intent intent = new Intent(getMContext(), WebViewActivity.class);
+                    intent.putExtra(WebViewActivity.WEB_URL, url);
+                    intent.putExtra(WebViewActivity.TITLE, mBeans.get(position - 1).getDesc());
+                    getMContext().startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getMContext(), ViewPicActivity.class);
+                    intent.putExtra(ViewPicActivity.IMG_URL,url);
+                    getMContext().startActivity(intent);
+                }
             }
         };
     }

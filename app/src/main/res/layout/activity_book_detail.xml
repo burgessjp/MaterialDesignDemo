@@ -21,7 +21,7 @@
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <ImageView
                 android:id="@+id/iv_book_image"
@@ -93,12 +93,7 @@
 
         </LinearLayout>
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/sliding_tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabGravity="fill"
-            app:tabMode="scrollable" />
+        <include layout="@layout/tablayout" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"

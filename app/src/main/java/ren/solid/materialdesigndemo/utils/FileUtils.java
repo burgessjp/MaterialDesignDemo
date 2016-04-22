@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
 
 /**
  * Created by _SOLID
@@ -249,6 +250,29 @@ public class FileUtils {
 
     public static String getSkinDirPath(Context context) {
         return getSkinDir(context).getAbsolutePath();
+    }
+
+    public static String getSaveImagePath(Context context) {
+        String path = getCacheDir(context).getAbsolutePath();
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            path = Environment.getExternalStorageDirectory().getAbsolutePath();
+        }
+
+        path = path + File.separator + "Pictures";
+        File file = new File(path);
+        if (!file.exists()) {
+            file.mkdir();
+        }
+        return path;
+    }
+
+    public static String generateFileNameByTime() {
+        return System.currentTimeMillis() + "";
+    }
+
+    public static String getFileName(String path) {
+        int index = path.lastIndexOf('/');
+        return path.substring(index+1);
     }
 
 

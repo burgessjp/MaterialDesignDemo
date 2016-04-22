@@ -3,6 +3,7 @@ package ren.solid.materialdesigndemo.fragment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,21 +30,24 @@ public class MainFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        Log.i(TAG, "initView");
         mTabLayout = customFindViewById(R.id.sliding_tabs);
         mViewPager = customFindViewById(R.id.viewpager);
 
 
         List<String> titles = new ArrayList<>();
         titles.add("找书籍");
-        titles.add("找电影");
+        //titles.add("找电影");
 
         FindPagerAdapter viewPagerAdapter = new FindPagerAdapter(getMContext(), titles, getChildFragmentManager());
         mViewPager.setAdapter(viewPagerAdapter);
 
-        mTabLayout.addTab(mTabLayout.newTab().setText("读书"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("电影"));
-        mTabLayout.setupWithViewPager(mViewPager);
+        // because the movie module not completed,so cancel the TabLayout temporary.
+
+        mTabLayout.setVisibility(View.GONE);
+        // mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+        // mTabLayout.addTab(mTabLayout.newTab().setText("读书"));
+        // mTabLayout.addTab(mTabLayout.newTab().setText("电影"));
+        //mTabLayout.setupWithViewPager(mViewPager);
 
         dynamicAddSkinView(mTabLayout, "tabIndicatorColor", R.color.colorAccent);
     }

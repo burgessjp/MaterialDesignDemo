@@ -1,5 +1,6 @@
 package ren.solid.materialdesigndemo.utils;
 
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
@@ -7,6 +8,11 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
+import com.thin.downloadmanager.DefaultRetryPolicy;
+import com.thin.downloadmanager.DownloadRequest;
+import com.thin.downloadmanager.DownloadStatusListener;
+import com.thin.downloadmanager.DownloadStatusListenerV1;
+import com.thin.downloadmanager.ThinDownloadManager;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -161,6 +167,7 @@ public class HttpUtils {
         loadImage(url, iv, false);
     }
 
+
     public void loadImage(String url, ImageView iv, boolean isCenterCrop) {
         loadImageWithHolder(url, iv, R.drawable.default_load_img, isCenterCrop);
     }
@@ -173,12 +180,27 @@ public class HttpUtils {
      * @param placeholderResID default image
      */
     public void loadImageWithHolder(String url, ImageView iv, int placeholderResID, boolean isCenterCrop) {
-        Picasso.with(SolidApplication.getInstance()).load(url).placeholder(placeholderResID).fit().into(iv);
-        RequestCreator creator = Picasso.with(SolidApplication.getInstance()).load(url).placeholder(R.drawable.default_load_img);
+        RequestCreator creator = Picasso.with(SolidApplication.getInstance()).load(url).placeholder(placeholderResID);
         if (isCenterCrop) {
             creator.centerCrop();
         }
         creator.fit().into(iv);
+    }
+
+
+    public static void downloadFile(String downloadUrl, String savePath, DownloadStatusListenerV1 listener) {
+        Uri downloadUri = Uri.parse(downloadUrl);
+        Uri destinationUri = Uri.parse(savePath);
+        DownloadRequest downloadRequest = new DownloadRequest(downloadUri)
+                // .addCustomHeader("Auth-Token", "YourTokenApiKey")
+                .setRetryPolicy(new DefaultRetryPolicy())
+                .setDestinationURI(destinationUri).setPriority(DownloadRequest.Priority.HIGH);
+        if (listener != null) {
+            downloadRequest.setStatusListener(listener);
+        }
+
+        ThinDownloadManager thinDownloadManager = new ThinDownloadManager(1);
+        thinDownloadManager.add(downloadRequest);
     }
 
 

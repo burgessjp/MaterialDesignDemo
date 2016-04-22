@@ -2,7 +2,9 @@ package ren.solid.materialdesigndemo.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
@@ -164,8 +166,11 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
      */
     private void initInputDialog() {
         mETInput = new EditText(getMContext());
+        mETInput.setTextColor(Color.parseColor("#292929"));
         AlertDialog.Builder builder = new AlertDialog.Builder(getMContext());
         builder.setTitle("请输入关键字");
+
+
         builder.setView(mETInput);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
