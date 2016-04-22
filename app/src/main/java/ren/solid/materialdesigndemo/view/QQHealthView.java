@@ -29,7 +29,7 @@ import ren.solid.materialdesigndemo.utils.ViewUtils;
  * Date:2016/4/10
  * Time:10:35
  * <p/>
- * update:加入动画，动画由简书网友Aracys提供
+ * update:加入动画，动画由简书网友xsfelvis提供
  */
 public class QQHealthView extends View {
 
