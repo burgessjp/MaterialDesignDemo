@@ -1,5 +1,12 @@
 
 
+2016年4月22日更新：
+更改项目结构，将可更改的第三方库转移到ThirdLibrary目录。
+目前App功能基本实现，下一步就是将通用的东西抽取到一个类库中。
+
+
+
+
 ####这是一个基于Material Design Support Library的一个小项目。里面会含有常用的一些组件及功能和一些常用工具类，本项目长期维护，我会慢慢的去完善。
 
 
@@ -18,6 +25,7 @@
 - fengjundev提供的开源库[Android-Skin-Loader](https://github.com/fengjundev/Android-Skin-Loader)
 
 - jianghejie提供的开源库[XRecyclerView](https://github.com/jianghejie/XRecyclerView)
+- chrisbanes提供的开源库[PhotoView](https://github.com/chrisbanes/PhotoView)
 
 
 ###使用到的其他开源库
@@ -25,6 +33,7 @@
 - [okhttp](https://github.com/square/okhttp)
 - [gson](https://github.com/google/gson)
 - [picasso](https://github.com/square/picasso)
+- [ThinDownloadManager](https://github.com/smanikandan14/ThinDownloadManager)
 
 
 **特别申明:本项目主要供学习使用,无任何商业用途。**
