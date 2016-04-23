@@ -1,13 +1,18 @@
 
 
-2016年4月22日更新：
+- **2016年4月22日更新：
 更改项目结构，将可更改的第三方库转移到ThirdLibrary目录。
-目前App功能基本实现，下一步就是将通用的东西抽取到一个类库中。
+目前App功能基本实现，下一步就是将通用的东西抽取到一个类库中。**
+
+- **2016年4月21号更新：增加干货与福利**
+
+- **2016年4月17号更新：增加主题换肤**
 
 
 
 
-####这是一个基于Material Design Support Library的一个小项目。里面会含有常用的一些组件及功能和一些常用工具类，本项目长期维护，我会慢慢的去完善。
+
+####这是一个基于Material Design Support Library的一个小项目。里面会含有常用的一些组件及功能，本项目长期维护。
 
 
 ###目前已实现的一些组件及功能
@@ -40,22 +45,14 @@
 
 ###效果展示图
 
-**2016年4月21号更新（增加干货与福利）：**
+![Demo换肤效果图](http://upload-images.jianshu.io/upload_images/623504-0c8a0c72d3a173ed.gif?imageMogr2/auto-orient/strip)
+
+---
+
+![](http://upload-images.jianshu.io/upload_images/623504-d2c16c55ea020ade.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![](http://upload-images.jianshu.io/upload_images/623504-3fa2a2b65cd24aba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![干货与福利](http://upload-images.jianshu.io/upload_images/623504-4ec5308bcd42ff50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-**2016年4月17号更新（增加主题换肤）：**
-
-![Demo换肤效果图](http://upload-images.jianshu.io/upload_images/623504-0c8a0c72d3a173ed.gif?imageMogr2/auto-orient/strip)
-
-----
-
-**初始提交（MD介绍）**
-
-![](http://upload-images.jianshu.io/upload_images/623504-8880b55a4190b6b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-![](http://upload-images.jianshu.io/upload_images/623504-529a167775dd2523.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
-![](http://upload-images.jianshu.io/upload_images/623504-a90889840527e8d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/623504-127a0f4cbaf7ea34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
