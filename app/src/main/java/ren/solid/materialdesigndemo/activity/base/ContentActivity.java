@@ -30,7 +30,7 @@ public abstract class ContentActivity extends BaseActivity {
         mToolbar.setTitle("图片");
 
         setSupportActionBar(mToolbar);
-        mToolbar.setNavigationIcon(R.mipmap.ic_back);
+        mToolbar.setNavigationIcon(R.drawable.ic_back);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

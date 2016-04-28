@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">>
     <item
         android:id="@+id/action_share"
-        android:icon="@mipmap/icon_share"
+        android:icon="@drawable/icon_share"
         android:title="分享"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_save"
-        android:icon="@mipmap/icon_save"
+        android:icon="@drawable/icon_save"
         android:title="保存"
         app:showAsAction="ifRoom" />
 </menu>

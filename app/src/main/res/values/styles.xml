@@ -11,7 +11,7 @@
     </style>
 
     <style name="ActionButton.Overflow.App" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
-        <item name="android:src">@mipmap/ic_menu_overflow</item>
+        <item name="android:src">@drawable/ic_menu_overflow</item>
     </style>
 
 

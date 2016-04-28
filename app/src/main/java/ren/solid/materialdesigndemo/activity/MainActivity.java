@@ -47,7 +47,6 @@ public class MainActivity extends BaseActivity {
             Log.i(TAG, "NOT NULL");
         }
 
-
     }
 
     @Override
@@ -76,7 +75,7 @@ public class MainActivity extends BaseActivity {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mToolbar.setNavigationIcon(R.mipmap.ic_drawer_home);
+        mToolbar.setNavigationIcon(R.drawable.ic_drawer_home);
 
         setNavigationViewItemClickListener();
         initDefaultFragment();

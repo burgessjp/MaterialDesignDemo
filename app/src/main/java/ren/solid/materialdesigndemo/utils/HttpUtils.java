@@ -199,7 +199,7 @@ public class HttpUtils {
             downloadRequest.setStatusListener(listener);
         }
 
-        ThinDownloadManager thinDownloadManager = new ThinDownloadManager(1);
+        ThinDownloadManager thinDownloadManager = new ThinDownloadManager();
         thinDownloadManager.add(downloadRequest);
     }
 
