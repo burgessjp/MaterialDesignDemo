@@ -2,6 +2,7 @@ package ren.solid.library.behavior;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -27,8 +28,8 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<ImageView> {
     private int mFinalYPosition; // 结束的Y轴位置
     private int mStartHeight; // 开始的图片高度
     private int mFinalHeight; // 结束的图片高度
-    private int mStartXPosition; // 起始的X轴高度
-    private int mFinalXPosition; // 结束的X轴高度
+    private int mStartXPosition; // 起始的X轴位置
+    private int mFinalXPosition; // 结束的X轴位置
     private float mStartToolbarPosition; // Toolbar的起始位置
 
     private final Context mContext;
@@ -50,14 +51,14 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<ImageView> {
 
     @Override
     public boolean layoutDependsOn(CoordinatorLayout parent, ImageView child, View dependency) {
-        Log.i(TAG,"layoutDependsOn："+(dependency instanceof Toolbar));
+        Log.i(TAG, "layoutDependsOn：" + (dependency instanceof Toolbar));
         // 依赖Toolbar控件
         return dependency instanceof Toolbar;
     }
 
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, ImageView child, View dependency) {
-        Log.i(TAG, "onDependentViewChanged:"+(dependency instanceof Toolbar));
+        Log.i(TAG, "onDependentViewChanged:" + (dependency instanceof Toolbar));
         // 初始化属性
         shouldInitProperties(child, dependency);
 
@@ -89,7 +90,6 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<ImageView> {
         child.setLayoutParams(lp);
 
 
-
         return true;
     }
 
@@ -115,7 +115,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<ImageView> {
 
         // Toolbar缩略图高度
         if (mFinalHeight == 0)
-            mFinalHeight =0; //mContext.getResources().getDimensionPixelOffset(R.dimen.image_final_width);
+            mFinalHeight = 0; //mContext.getResources().getDimensionPixelOffset(R.dimen.image_final_width);
 
         // 图片控件水平中心
         if (mStartXPosition == 0)
@@ -123,7 +123,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<ImageView> {
 
         // 边缘+缩略图宽度的一半
         if (mFinalXPosition == 0)
-            mFinalXPosition =mContext.getResources().getDimensionPixelOffset(R.dimen.abc_action_bar_default_height_material) + (mFinalHeight / 2);
+            mFinalXPosition = mContext.getResources().getDimensionPixelOffset(R.dimen.abc_action_bar_default_height_material) + (mFinalHeight / 2);
 
         // Toolbar的起始位置
         if (mStartToolbarPosition == 0)

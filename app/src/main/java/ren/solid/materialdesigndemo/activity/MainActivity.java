@@ -139,14 +139,13 @@ public class MainActivity extends BaseActivity {
                         switchFragment(ChangeSkinFragment.class);
                         break;
                     case R.id.navigation_item_about:
-                        startActivityWithoutExtras(AboutActivity.class);
+                        mToolbar.setTitle("关于");
+                        switchFragment(AboutFragment.class);
                         break;
                     default:
                         break;
                 }
-                if (!item.getTitle().equals("关于")) {
-                    item.setChecked(true);
-                }
+                item.setChecked(true);
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
                 mPreMenuItem = item;
                 return false;
@@ -184,7 +183,10 @@ public class MainActivity extends BaseActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_about) {
+            startActivityWithoutExtras(AboutActivity.class);
         }
+
 
         return super.onOptionsItemSelected(item);
     }
