@@ -1,4 +1,4 @@
-package ren.solid.library.adapter;
+package ren.solid.library.adapter.base;
 
 import android.content.Context;
 
