@@ -2,13 +2,10 @@ package ren.solid.materialdesigndemo.fragment;
 
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
+import ren.solid.library.fragment.base.BaseFragment;
 import ren.solid.materialdesigndemo.R;
-import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
 
 /**
  * Created by _SOLID

@@ -1,5 +1,6 @@
 package ren.solid.materialdesigndemo.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -13,16 +14,16 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import ren.solid.library.activity.base.BaseActivity;
+import ren.solid.library.fragment.WebViewFragment;
 import ren.solid.materialdesigndemo.R;
-import ren.solid.materialdesigndemo.activity.base.BaseActivity;
 import ren.solid.materialdesigndemo.fragment.AboutFragment;
 import ren.solid.materialdesigndemo.fragment.BlogFragment;
 import ren.solid.materialdesigndemo.fragment.ChangeSkinFragment;
 import ren.solid.materialdesigndemo.fragment.CustomViewFragment;
 import ren.solid.materialdesigndemo.fragment.GanHuoFragment;
 import ren.solid.materialdesigndemo.fragment.MainFragment;
-import ren.solid.materialdesigndemo.fragment.base.WebViewFragment;
-import ren.solid.materialdesigndemo.utils.ViewUtils;
+import ren.solid.library.utils.ViewUtils;
 
 public class MainActivity extends BaseActivity {
 
@@ -138,13 +139,14 @@ public class MainActivity extends BaseActivity {
                         switchFragment(ChangeSkinFragment.class);
                         break;
                     case R.id.navigation_item_about:
-                        mToolbar.setTitle("关于");
-                        switchFragment(AboutFragment.class);
+                        startActivityWithoutExtras(AboutActivity.class);
                         break;
                     default:
                         break;
                 }
-                item.setChecked(true);
+                if (!item.getTitle().equals("关于")) {
+                    item.setChecked(true);
+                }
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
                 mPreMenuItem = item;
                 return false;

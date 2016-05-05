@@ -14,5 +14,10 @@
         <item name="android:src">@drawable/ic_menu_overflow</item>
     </style>
 
+    <style name="CollapsingToolbarTitleStyle"
+        parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+
 
 </resources>

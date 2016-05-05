@@ -1,15 +1,14 @@
 package ren.solid.materialdesigndemo.fragment;
 
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import java.io.File;
 
+import ren.solid.library.fragment.base.BaseFragment;
 import ren.solid.materialdesigndemo.R;
-import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
-import ren.solid.materialdesigndemo.utils.FileUtils;
+import ren.solid.library.utils.FileUtils;
 import ren.solid.skinloader.listener.ILoaderListener;
 import ren.solid.skinloader.load.SkinManager;
 

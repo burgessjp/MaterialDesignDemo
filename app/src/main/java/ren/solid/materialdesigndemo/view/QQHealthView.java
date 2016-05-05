@@ -22,7 +22,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import ren.solid.materialdesigndemo.R;
-import ren.solid.materialdesigndemo.utils.ViewUtils;
+import ren.solid.library.utils.ViewUtils;
 
 /**
  * Created by _SOLID

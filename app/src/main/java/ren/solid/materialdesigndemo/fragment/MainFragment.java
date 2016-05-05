@@ -2,15 +2,14 @@ package ren.solid.materialdesigndemo.fragment;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ren.solid.library.fragment.base.BaseFragment;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.adapter.FindPagerAdapter;
-import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
 
 /**
  * Created by _SOLID

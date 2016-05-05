@@ -9,7 +9,7 @@ import java.util.List;
 
 import ren.solid.materialdesigndemo.fragment.BookFragment;
 import ren.solid.materialdesigndemo.fragment.MovieFragment;
-import ren.solid.materialdesigndemo.utils.ViewUtils;
+import ren.solid.library.utils.ViewUtils;
 
 /**
  * Created by _SOLID

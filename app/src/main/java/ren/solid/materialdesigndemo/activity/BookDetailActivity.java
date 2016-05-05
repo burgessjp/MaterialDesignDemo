@@ -12,11 +12,11 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import ren.solid.library.activity.base.BaseActivity;
 import ren.solid.materialdesigndemo.R;
-import ren.solid.materialdesigndemo.activity.base.BaseActivity;
 import ren.solid.materialdesigndemo.adapter.BookInfoPageAdapter;
 import ren.solid.materialdesigndemo.bean.BookBean;
-import ren.solid.materialdesigndemo.utils.HttpUtils;
+import ren.solid.library.utils.HttpUtils;
 
 /**
  * Created by _SOLID

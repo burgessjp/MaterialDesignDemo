@@ -1,6 +1,7 @@
 package ren.solid.materialdesigndemo.fragment;
 
-import ren.solid.materialdesigndemo.fragment.base.WebViewFragment;
+
+import ren.solid.library.fragment.WebViewFragment;
 
 /**
  * Created by _SOLID

@@ -2,8 +2,8 @@ package ren.solid.materialdesigndemo.activity;
 
 import android.util.Log;
 
+import ren.solid.library.activity.base.BaseActivity;
 import ren.solid.materialdesigndemo.R;
-import ren.solid.materialdesigndemo.activity.base.BaseActivity;
 
 public class SettingActivity extends BaseActivity {
 

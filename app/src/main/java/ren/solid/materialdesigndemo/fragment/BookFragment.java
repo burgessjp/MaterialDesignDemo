@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
@@ -22,13 +21,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import ren.solid.library.fragment.base.BaseFragment;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.adapter.BookAdapter;
 import ren.solid.materialdesigndemo.bean.BookBean;
 import ren.solid.materialdesigndemo.constants.Apis;
-import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
-import ren.solid.materialdesigndemo.utils.HttpUtils;
-import ren.solid.materialdesigndemo.utils.ToastUtils;
+import ren.solid.library.utils.HttpUtils;
+import ren.solid.library.utils.ToastUtils;
 
 /**
  * Created by _SOLID

@@ -1,7 +1,6 @@
 package ren.solid.materialdesigndemo.fragment;
 
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -10,9 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import ren.solid.library.fragment.base.BaseFragment;
 import ren.solid.materialdesigndemo.R;
-import ren.solid.materialdesigndemo.fragment.base.BaseFragment;
-import ren.solid.materialdesigndemo.view.QQHealthView;
 import ren.solid.materialdesigndemo.view.WindowsLayout;
 
 /**
@@ -55,6 +53,7 @@ public class CustomViewFragment extends BaseFragment {
                 popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, location[0], location[1]-height);
             }
         });
+        
 
 
     }

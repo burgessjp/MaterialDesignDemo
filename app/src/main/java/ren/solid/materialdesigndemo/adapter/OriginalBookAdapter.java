@@ -15,8 +15,8 @@ import java.util.List;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.activity.BookDetailActivity;
 import ren.solid.materialdesigndemo.bean.BookBean;
-import ren.solid.materialdesigndemo.utils.HttpUtils;
-import ren.solid.materialdesigndemo.utils.ViewUtils;
+import ren.solid.library.utils.HttpUtils;
+import ren.solid.library.utils.ViewUtils;
 
 /**
  * Created by _SOLID

@@ -5,9 +5,9 @@ import android.content.Intent;
 
 import java.util.List;
 
+import ren.solid.library.adapter.base.SolidRVBaseAdapter;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.activity.BookDetailActivity;
-import ren.solid.materialdesigndemo.adapter.base.SolidRVBaseAdapter;
 import ren.solid.materialdesigndemo.bean.BookBean;
 
 /**
@@ -33,7 +33,7 @@ public class BookAdapter extends SolidRVBaseAdapter<BookBean> {
         mContext.startActivity(intent);
     }
     @Override
-    protected void onBindDataToView(SolidCommonViewHolder holder, BookBean bean) {
+    protected void onBindDataToView(SolidCommonViewHolder holder, BookBean bean,int position) {
         holder.setText(R.id.tv_title, bean.getTitle());
         holder.setText(R.id.tv_price, "￥" + bean.getPrice());
         holder.setText(R.id.tv_author, "作者:" + bean.getAuthor() + "");

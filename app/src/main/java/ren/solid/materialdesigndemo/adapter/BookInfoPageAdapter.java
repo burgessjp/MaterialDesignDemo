@@ -9,9 +9,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import ren.solid.library.fragment.StringFragment;
+import ren.solid.library.utils.ViewUtils;
 import ren.solid.materialdesigndemo.bean.BookBean;
-import ren.solid.materialdesigndemo.fragment.base.StringFragment;
-import ren.solid.materialdesigndemo.utils.ViewUtils;
 
 /**
  * Created by _SOLID
