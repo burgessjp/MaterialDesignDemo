@@ -42,6 +42,8 @@ public class AboutActivity extends BaseActivity {
 
     private AppBarLayout mAblAppBar; // 整个可以滑动的AppBar
 
+    private CollapsingToolbarLayout mCollapsingToolbarLayout;
+
     private TextView mTvToolbarTitle; // 标题栏Title
 
     private TextView mTvMsg;
@@ -58,6 +60,7 @@ public class AboutActivity extends BaseActivity {
         mLlTitleContainer = customFindViewById(R.id.ll_title_container);
         mTvMsg = customFindViewById(R.id.tv_msg);
         mTvToolbarTitle = customFindViewById(R.id.tv_toolbar_title);
+        mCollapsingToolbarLayout = customFindViewById(R.id.collapsing_toolbar_layout);
 
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
@@ -79,13 +82,11 @@ public class AboutActivity extends BaseActivity {
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 int maxScroll = appBarLayout.getTotalScrollRange();
                 float percentage = (float) Math.abs(verticalOffset) / (float) maxScroll;
-                if (percentage >=0.5f) {
+                if (percentage >= 0.5f) {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                     getSupportActionBar().setHomeButtonEnabled(true);
                     mToolbar.setNavigationIcon(R.drawable.ic_back);
-                }
-                else
-                {
+                } else {
                     getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                     getSupportActionBar().setHomeButtonEnabled(false);
                 }
@@ -96,6 +97,10 @@ public class AboutActivity extends BaseActivity {
         });
 
         initParallaxValues(); // 自动滑动效果
+
+        dynamicAddSkinEnableView(mCollapsingToolbarLayout, "contentScrimColor", R.color.colorPrimary);
+        dynamicAddSkinEnableView(mToolbar, "background", R.color.colorPrimary);
+        dynamicAddSkinEnableView(mFlTitleContainer, "background", R.color.colorPrimary);
     }
 
     @Override

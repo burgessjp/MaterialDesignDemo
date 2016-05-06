@@ -27,7 +27,7 @@ import ren.solid.library.utils.SystemShareUtils;
  * <p/>
  * view full picture
  */
-public class ViewPicActivity extends ContentActivity {
+public class ViewPicActivity extends ToolbarActivity {
 
     private static String TAG = "ViewPicActivity";
     public final static String IMG_URL = "ViewPicActivity";
@@ -38,6 +38,11 @@ public class ViewPicActivity extends ContentActivity {
     protected void init() {
         super.init();
         mUrl = getIntent().getExtras().getString(IMG_URL);
+    }
+
+    @Override
+    protected String getToolbarTitle() {
+        return "图片";
     }
 
     @Override

@@ -16,7 +16,7 @@ import ren.solid.library.activity.base.BaseActivity;
  * <p>
  * include toolbar ,and you can set a fragment to show
  */
-public abstract class ContentActivity extends BaseActivity {
+public abstract class ToolbarActivity extends BaseActivity {
 
     protected Toolbar mToolbar;
     protected FragmentManager mFragmentManager;
@@ -29,7 +29,7 @@ public abstract class ContentActivity extends BaseActivity {
     @Override
     protected void initView() {
         mToolbar = customFindViewById(R.id.toolbar);
-        mToolbar.setTitle("图片");
+        mToolbar.setTitle(getToolbarTitle());
 
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(R.drawable.ic_back);
@@ -43,6 +43,8 @@ public abstract class ContentActivity extends BaseActivity {
 
         dynamicAddSkinEnableView(mToolbar, "background", R.color.colorPrimary);
     }
+
+    protected  abstract String getToolbarTitle();
 
     @Override
     protected void initData() {

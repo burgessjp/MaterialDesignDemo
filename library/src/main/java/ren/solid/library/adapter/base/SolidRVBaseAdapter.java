@@ -102,7 +102,6 @@ public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRV
         }
         if (position > mLastAnimatedPosition) {
             mLastAnimatedPosition = position;
-
             view.setAlpha(0);
             view.postDelayed(new Runnable() {
                 @Override
@@ -119,7 +118,7 @@ public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRV
                     });
                     view.startAnimation(animation);
                 }
-            }, 100 * position);
+            }, 100);
         }
     }
 

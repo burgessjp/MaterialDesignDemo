@@ -1,26 +1,20 @@
 package ren.solid.materialdesigndemo.activity;
 
-import android.util.Log;
+import android.support.v4.app.Fragment;
 
-import ren.solid.library.activity.base.BaseActivity;
-import ren.solid.materialdesigndemo.R;
+import ren.solid.library.activity.ToolbarActivity;
+import ren.solid.materialdesigndemo.fragment.AboutFragment;
 
-public class SettingActivity extends BaseActivity {
+public class SettingActivity extends ToolbarActivity {
 
 
     @Override
-    protected void initView() {
-
+    protected String getToolbarTitle() {
+        return "设置";
     }
 
     @Override
-    protected int setLayoutResourceID() {
-        return R.layout.activity_setting;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i("SettingActivity","onDestroy");
+    protected Fragment setFragment() {
+        return new AboutFragment();
     }
 }

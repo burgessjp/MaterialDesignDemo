@@ -58,19 +58,20 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<ImageView> {
 
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, ImageView child, View dependency) {
-        Log.i(TAG, "onDependentViewChanged:" + (dependency instanceof Toolbar));
+
+        Log.i(TAG, "onDependentViewChanged:" + (dependency instanceof Toolbar) + "    getStatusBarHeight():" + getStatusBarHeight());
         // 初始化属性
         shouldInitProperties(child, dependency);
-
+        Log.i(TAG, "mStartToolbarPosition:" + mStartToolbarPosition);
         // 最大滑动距离: 起始位置-状态栏高度
-        final int maxScrollDistance = (int) (mStartToolbarPosition - getStatusBarHeight());
-
+        final int maxScrollDistance = (int) (mStartToolbarPosition-getStatusBarHeight());
+        Log.i(TAG, "maxScrollDistance:" + maxScrollDistance);
         // 滑动的百分比
         float expandedPercentageFactor = dependency.getY() / maxScrollDistance;
-
+        Log.i(TAG, "dependency.getY():" + dependency.getY());
         // Y轴距离
         float distanceYToSubtract = ((mStartYPosition - mFinalYPosition)
-                * (1f - expandedPercentageFactor)) + (child.getHeight() / 2);
+                * (1f - expandedPercentageFactor)) + (child.getHeight()/2);
 
         // X轴距离
         float distanceXToSubtract = ((mStartXPosition - mFinalXPosition)
@@ -107,7 +108,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<ImageView> {
 
         // Toolbar中心
         if (mFinalYPosition == 0)
-            mFinalYPosition = (dependency.getHeight() / 2);
+            mFinalYPosition = (dependency.getHeight() /2);
 
         // 图片高度
         if (mStartHeight == 0)

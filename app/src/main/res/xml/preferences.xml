@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="流量控制">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/pre_refresh_data"
+            android:summaryOff="在WIFI和移动网络下"
+            android:summaryOn="仅在WIFI下"
+            android:title="进入自动刷新数据"/>
+        <CheckBoxPreference
+            android:checked="true"
+            android:defaultValue="true"
+            android:key="@string/pre_get_image"
+            android:summaryOff="关闭"
+            android:summaryOn="打开"
+            android:title="每日自动更换主题"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="显示效果">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pre_status_bar"
+            android:summaryOff="半透明状态栏"
+            android:summaryOn="沉浸式状态栏"
+            android:title="状态栏显示效果"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/pre_nav_color"
+            android:summaryOff="关闭导航栏变色"
+            android:summaryOn="开启导航栏变色"
+            android:title="导航栏变色"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="兼容性">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/pre_use_local"
+            android:summary="播放视频白屏的用户请勾选此选项"
+            android:title="使用手机浏览器打开微信和视频"
+            />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="缓存管理">
+        <Preference
+            android:key="@string/pre_cache_size"
+            android:summary="缓存大小:0B"
+            android:title="清除缓存"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="更多">
+        <Preference
+            android:key="@string/pre_author"
+            android:summary="一个无聊的程序员"
+            android:title="作者:蔡小木"/>
+        <Preference
+            android:key="@string/pre_feedback"
+            android:summary="me@caiyao.name"
+            android:title="反馈和建议"/>
+        <Preference
+            android:key="@string/pre_version"
+            android:summary="101"
+            android:title="版本号"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
