@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#c1c1c1"
+        android:gravity="center"
+        android:text="DEAFULT"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/btn_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#2195f3"
+        android:gravity="center"
+        android:text="INFO"
+        android:textColor="#ffffff" />
+    <Button
+        android:id="@+id/btn_warning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#ffffc107"
+        android:gravity="center"
+        android:text="WARNING"
+        android:textColor="#ffffff" />
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#ff4caf50"
+        android:gravity="center"
+        android:text="CONFIRM"
+        android:textColor="#ffffff" />
+    <Button
+        android:id="@+id/btn_danger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#fff44336"
+        android:gravity="center"
+        android:text="DANGER"
+        android:textColor="#ffffff" />
+</LinearLayout>

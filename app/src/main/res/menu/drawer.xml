@@ -22,6 +22,10 @@
             android:id="@+id/navigation_item_custom_view"
             android:icon="@drawable/iconfont_custom_view"
             android:title="自定义View" />
+        <item
+            android:id="@+id/navigation_item_snackbar"
+            android:icon="@drawable/iconfont_custom_view"
+            android:title="Snackbar演示" />
 
         <item android:title="其他">
             <menu>

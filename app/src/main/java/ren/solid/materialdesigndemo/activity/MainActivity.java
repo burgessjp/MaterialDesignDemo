@@ -2,7 +2,6 @@ package ren.solid.materialdesigndemo.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +14,7 @@ import android.view.MenuItem;
 
 import ren.solid.library.activity.base.BaseActivity;
 import ren.solid.library.fragment.WebViewFragment;
+import ren.solid.library.utils.SnackBarUtils;
 import ren.solid.library.utils.ViewUtils;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.fragment.AboutFragment;
@@ -23,6 +23,7 @@ import ren.solid.materialdesigndemo.fragment.ChangeSkinFragment;
 import ren.solid.materialdesigndemo.fragment.CustomViewFragment;
 import ren.solid.materialdesigndemo.fragment.GanHuoFragment;
 import ren.solid.materialdesigndemo.fragment.MainFragment;
+import ren.solid.materialdesigndemo.fragment.SnackBarFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -36,7 +37,6 @@ public class MainActivity extends BaseActivity {
     private FragmentManager mFragmentManager;
     private Fragment mCurrentFragment;
     private MenuItem mPreMenuItem;
-
 
 
     @Override
@@ -134,6 +134,10 @@ public class MainActivity extends BaseActivity {
                         mToolbar.setTitle("自定义View");
                         switchFragment(CustomViewFragment.class);
                         break;
+                    case R.id.navigation_item_snackbar:
+                        mToolbar.setTitle("Snackbar演示");
+                        switchFragment(SnackBarFragment.class);
+                        break;
                     case R.id.navigation_item_switch_theme:
                         mToolbar.setTitle("主题换肤");
                         switchFragment(ChangeSkinFragment.class);
@@ -212,7 +216,7 @@ public class MainActivity extends BaseActivity {
 
         long currentTick = System.currentTimeMillis();
         if (currentTick - lastBackKeyDownTick > MAX_DOUBLE_BACK_DURATION) {
-            Snackbar.make(mDrawerLayout, "再按一次退出", Snackbar.LENGTH_SHORT).show();
+            SnackBarUtils.makeShort(mDrawerLayout, "再按一次退出").success();
             lastBackKeyDownTick = currentTick;
         } else {
             finish();
