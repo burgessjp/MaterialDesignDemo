@@ -9,12 +9,12 @@ import android.view.View;
  * Time:11:30
  */
 public class SnackBarUtils {
-    private static final int color_danger = 0xffa94442;
-    private static final int color_success = 0xff3c763d;
-    private static final int color_info = 0xff31708f;
-    private static final int color_warning = 0xff8a6d3b;
+    private static final int color_danger = 0XFFA94442;
+    private static final int color_success = 0XFF3C763D;
+    private static final int color_info = 0XFF31708F;
+    private static final int color_warning = 0XFF8A6D3B;
 
-    private static final int action_color = 0xffCDC5BF;
+    private static final int color_action = 0XFFCDC5BF;
 
     private Snackbar mSnackbar;
 
@@ -94,7 +94,7 @@ public class SnackBarUtils {
     }
 
     public void show(String actionText, View.OnClickListener listener) {
-        mSnackbar.setActionTextColor(action_color);
+        mSnackbar.setActionTextColor(color_action);
         mSnackbar.setAction(actionText, listener).show();
     }
 }
