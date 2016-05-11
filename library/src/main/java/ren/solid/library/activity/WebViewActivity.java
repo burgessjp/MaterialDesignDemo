@@ -46,7 +46,7 @@ public class WebViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void setUpView() {
         //设置Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle(mTitle);
@@ -88,7 +88,7 @@ public class WebViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void initData() {
+    protected void setUpData() {
         mWebViewFragment = new WebViewFragment() {
             @Override
             protected String getLoadUrl() {

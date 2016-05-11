@@ -26,15 +26,15 @@ public class CustomViewFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
-//        QQHealthView qqHealthView = customFindViewById(R.id.qqhealthview);
+    protected void setUpView() {
+        super.setUpView();
+//        QQHealthView qqHealthView = $(R.id.qqhealthview);
 //        qqHealthView.setSteps(new int[]{5025, 15280, 8900, 9200, 6500, 5660, 9450});
         // qqHealthView.setThemeColor(Color.parseColor("#87CEEB"));
 
-        final WindowsLayout windowsLayout = customFindViewById(R.id.windows_layout);
+        final WindowsLayout windowsLayout = $(R.id.windows_layout);
 
-        LinearLayout ll_bottom = customFindViewById(R.id.ll_bottom);
+        LinearLayout ll_bottom = $(R.id.ll_bottom);
         ll_bottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

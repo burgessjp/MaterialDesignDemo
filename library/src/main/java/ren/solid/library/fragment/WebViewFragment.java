@@ -38,7 +38,7 @@ public abstract class WebViewFragment extends BaseFragment {
     protected abstract String getLoadUrl();
 
     @Override
-    protected void initView() {
+    protected void setUpView() {
         mProgressBar = (ProgressBar) getContentView().findViewById(R.id.progressbar);
         mWebView = (WebView) getContentView().findViewById(R.id.webView);
 

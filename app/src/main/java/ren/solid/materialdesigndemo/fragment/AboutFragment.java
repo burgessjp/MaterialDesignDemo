@@ -21,8 +21,8 @@ public class AboutFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
-        TextView tv_content = customFindViewById(R.id.tv_content);
+    protected void setUpView() {
+        TextView tv_content = $(R.id.tv_content);
         tv_content.setAutoLinkMask(Linkify.ALL);
         tv_content.setMovementMethod(LinkMovementMethod
                 .getInstance());

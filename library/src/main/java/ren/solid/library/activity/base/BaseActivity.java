@@ -1,6 +1,5 @@
 package ren.solid.library.activity.base;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,11 +18,11 @@ public abstract class BaseActivity extends SkinBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(setLayoutResourceID());
         init();
-        initView();
-        initData();
+        setUpView();
+        setUpData();
     }
 
-    protected void initData() {
+    protected void setUpData() {
     }
 
     /***
@@ -33,11 +32,11 @@ public abstract class BaseActivity extends SkinBaseActivity {
 
     }
 
-    protected abstract void initView();
+    protected abstract void setUpView();
 
     protected abstract int setLayoutResourceID();
 
-    protected <T extends View> T customFindViewById(int id) {
+    protected <T extends View> T $(int id) {
         return (T) super.findViewById(id);
     }
 

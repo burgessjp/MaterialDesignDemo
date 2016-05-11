@@ -36,15 +36,15 @@ public class ChangeSkinFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
-        customFindViewById(R.id.ll_green).setOnClickListener(new View.OnClickListener() {
+    protected void setUpView() {
+        $(R.id.ll_green).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SkinManager.getInstance().restoreDefaultTheme();
 
             }
         });
-        customFindViewById(R.id.ll_brown).setOnClickListener(new View.OnClickListener() {
+        $(R.id.ll_brown).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String skinFullName = SKIN_DIR + File.separator + "skin_brown.skin";
@@ -75,7 +75,7 @@ public class ChangeSkinFragment extends BaseFragment {
                         });
             }
         });
-        customFindViewById(R.id.ll_black).setOnClickListener(new View.OnClickListener() {
+        $(R.id.ll_black).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String skinFullName = SKIN_DIR + File.separator + "skin_black.skin";

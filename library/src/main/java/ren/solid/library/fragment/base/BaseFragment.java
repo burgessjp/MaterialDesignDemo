@@ -29,14 +29,14 @@ public abstract class BaseFragment extends SkinBaseFragment {
         mProgressDialog = new ProgressDialog(getMContext());
         mProgressDialog.setCanceledOnTouchOutside(false);
         init();
-        initView();
-        initData();
+        setUpView();
+        setUpData();
         return mContentView;
     }
 
     protected abstract int setLayoutResourceID();
 
-    protected void initData() {
+    protected void setUpData() {
 
     }
 
@@ -44,10 +44,10 @@ public abstract class BaseFragment extends SkinBaseFragment {
 
     }
 
-    protected void initView() {
+    protected void setUpView() {
     }
 
-    protected <T extends View> T customFindViewById(int id) {
+    protected <T extends View> T $(int id) {
         return (T) mContentView.findViewById(id);
     }
 

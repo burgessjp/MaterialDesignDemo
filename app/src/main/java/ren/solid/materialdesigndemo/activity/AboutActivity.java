@@ -51,16 +51,16 @@ public class AboutActivity extends BaseActivity {
     private Toolbar mToolbar; // 工具栏
 
     @Override
-    protected void initView() {
+    protected void setUpView() {
 
-        mToolbar = customFindViewById(R.id.toolbar);
-        mAblAppBar = customFindViewById(R.id.app_bar);
-        mIvPlaceholder = customFindViewById(R.id.iv_placeholder);
-        mFlTitleContainer = customFindViewById(R.id.fl_title_container);
-        mLlTitleContainer = customFindViewById(R.id.ll_title_container);
-        mTvMsg = customFindViewById(R.id.tv_msg);
-        mTvToolbarTitle = customFindViewById(R.id.tv_toolbar_title);
-        mCollapsingToolbarLayout = customFindViewById(R.id.collapsing_toolbar_layout);
+        mToolbar = $(R.id.toolbar);
+        mAblAppBar = $(R.id.app_bar);
+        mIvPlaceholder = $(R.id.iv_placeholder);
+        mFlTitleContainer = $(R.id.fl_title_container);
+        mLlTitleContainer = $(R.id.ll_title_container);
+        mTvMsg = $(R.id.tv_msg);
+        mTvToolbarTitle = $(R.id.tv_toolbar_title);
+        mCollapsingToolbarLayout = $(R.id.collapsing_toolbar_layout);
 
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);

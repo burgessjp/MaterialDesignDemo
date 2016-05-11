@@ -20,7 +20,7 @@ public class StringFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void setUpView() {
         mText = getArguments().getString("text");
         mTvText = (TextView) getContentView().findViewById(R.id.tv_text);
         if (!mText.equals(""))

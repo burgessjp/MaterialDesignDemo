@@ -13,8 +13,8 @@ import ren.solid.library.activity.base.BaseActivity;
  * Created by _SOLID
  * Date:2016/4/22
  * Time:13:30
- * <p>
- * include toolbar ,and you can set a fragment to show
+ * <p/>
+ * ToolbarActivity
  */
 public abstract class ToolbarActivity extends BaseActivity {
 
@@ -27,10 +27,16 @@ public abstract class ToolbarActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
-        mToolbar = customFindViewById(R.id.toolbar);
+    protected void setUpView() {
+        mToolbar = $(R.id.toolbar);
         mToolbar.setTitle(getToolbarTitle());
 
+        setUpToolBar();
+
+        dynamicAddSkinEnableView(mToolbar, "background", R.color.colorPrimary);
+    }
+
+    private void setUpToolBar() {
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationIcon(R.drawable.ic_back);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -40,14 +46,12 @@ public abstract class ToolbarActivity extends BaseActivity {
             }
         });
         getSupportActionBar().setHomeButtonEnabled(true);//决定左上角的图标是否可以点击
-
-        dynamicAddSkinEnableView(mToolbar, "background", R.color.colorPrimary);
     }
 
-    protected  abstract String getToolbarTitle();
+    protected abstract String getToolbarTitle();
 
     @Override
-    protected void initData() {
+    protected void setUpData() {
         mFragmentManager.beginTransaction().replace(R.id.fl_content, setFragment()).commit();
     }
 

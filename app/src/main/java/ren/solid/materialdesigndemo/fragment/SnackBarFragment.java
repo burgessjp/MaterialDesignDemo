@@ -18,26 +18,26 @@ public class SnackBarFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
-        customFindViewById(R.id.btn_default).setOnClickListener(new View.OnClickListener() {
+    protected void setUpView() {
+        $(R.id.btn_default).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SnackBarUtils.makeShort(v, "TEXT").show();
             }
         });
-        customFindViewById(R.id.btn_danger).setOnClickListener(new View.OnClickListener() {
+        $(R.id.btn_danger).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SnackBarUtils.makeShort(v, "TEXT").danger();
             }
         });
-        customFindViewById(R.id.btn_confirm).setOnClickListener(new View.OnClickListener() {
+        $(R.id.btn_confirm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SnackBarUtils.makeShort(v, "TEXT").success();
             }
         });
-        customFindViewById(R.id.btn_info).setOnClickListener(new View.OnClickListener() {
+        $(R.id.btn_info).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SnackBarUtils.makeShort(v, "TEXT").info("action", new View.OnClickListener() {
@@ -48,7 +48,7 @@ public class SnackBarFragment extends BaseFragment {
                 });
             }
         });
-        customFindViewById(R.id.btn_warning).setOnClickListener(new View.OnClickListener() {
+        $(R.id.btn_warning).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SnackBarUtils.makeShort(v, "TEXT").warning("action", new View.OnClickListener() {

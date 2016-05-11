@@ -20,9 +20,9 @@ public class MovieFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
-        super.initView();
-        customFindViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
+    protected void setUpView() {
+        super.setUpView();
+        $(R.id.tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getMContext(), SettingActivity.class));

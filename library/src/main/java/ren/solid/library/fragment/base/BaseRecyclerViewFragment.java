@@ -50,12 +50,12 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void setUpView() {
 
-        mLLReloadWarp = customFindViewById(R.id.ll_reload_wrap);
-        mBtnReload = customFindViewById(R.id.btn_reload);
+        mLLReloadWarp = $(R.id.ll_reload_wrap);
+        mBtnReload = $(R.id.btn_reload);
 
-        mRecyclerView = customFindViewById(R.id.recyclerview);
+        mRecyclerView = $(R.id.recyclerview);
         mRecyclerView.setLayoutManager(setLayoutManager());
         mRecyclerView.setRefreshProgressStyle(ProgressStyle.BallClipRotatePulse);
         mRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.SquareSpin);
@@ -87,7 +87,7 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment {
 
 
     @Override
-    protected void initData() {
+    protected void setUpData() {
         mRecyclerView.setRefreshing(true);
     }
 

@@ -59,10 +59,10 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
-    protected void initView() {
-        mFABSearch = customFindViewById(R.id.fab_search);
+    protected void setUpView() {
+        mFABSearch = $(R.id.fab_search);
         LinearLayoutManager LayoutManager = new LinearLayoutManager(getContext());
-        mRecyclerView = customFindViewById(R.id.recyclerview);
+        mRecyclerView = $(R.id.recyclerview);
         mBookAdapter = new BookAdapter(getMContext(), new ArrayList<BookBean>());
         mRecyclerView.setAdapter(mBookAdapter);
         mRecyclerView.setLayoutManager(LayoutManager);
@@ -85,7 +85,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
-    protected void initData() {
+    protected void setUpData() {
         String[] keyWords = {"Android", "文艺青年", "科技", ".NET", "创业之路"};
         Random random = new Random();
         int n = random.nextInt(keyWords.length);
@@ -177,7 +177,7 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
 
                 mCurrentKeyWord = mETInput.getText().toString();
                 if ("".equals(mCurrentKeyWord)) {//如果用户输入的关键字为空，我们就按照最开始的数据加载方式加载
-                    initData();
+                    setUpData();
                 } else {
                     switchAction(ACTION_REFRESH);
                 }

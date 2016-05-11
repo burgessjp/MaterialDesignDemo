@@ -29,11 +29,11 @@ public class GanHuoFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
+    protected void setUpView() {
 
         mTitles = new String[]{"all", "休息视频", "福利", "Android", "iOS", "拓展资源", "前端", "瞎推荐"};
-        mTabLayout = customFindViewById(R.id.sliding_tabs);
-        mViewPager = customFindViewById(R.id.viewpager);
+        mTabLayout = $(R.id.sliding_tabs);
+        mViewPager = $(R.id.viewpager);
         mAdapter = new GanHuoPagerAdapter(getChildFragmentManager(), mTitles);
 
         for (int i = 0; i < mTitles.length; i++) {

@@ -61,10 +61,10 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
-        mToolbar = customFindViewById(R.id.toolbar);
-        mDrawerLayout = customFindViewById(R.id.drawer_layout);
-        mNavigationView = customFindViewById(R.id.navigation_view);
+    protected void setUpView() {
+        mToolbar = $(R.id.toolbar);
+        mDrawerLayout = $(R.id.drawer_layout);
+        mNavigationView = $(R.id.navigation_view);
 
 
         mToolbar.setTitle("首页");

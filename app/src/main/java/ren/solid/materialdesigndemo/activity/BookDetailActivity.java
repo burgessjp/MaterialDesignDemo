@@ -38,7 +38,7 @@ public class BookDetailActivity extends BaseActivity {
     private TabLayout mTabLayout;
 
     @Override
-    protected void initView() {
+    protected void setUpView() {
         //设置Toolbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -52,13 +52,13 @@ public class BookDetailActivity extends BaseActivity {
             }
         });
 
-        mCollapsingToolbarLayout = customFindViewById(R.id.collapsing_toolbar_layout);
-        mIvBook = customFindViewById(R.id.iv_book_image);
-        mTvTitle = customFindViewById(R.id.tv_title);
-        mTvMsg = customFindViewById(R.id.tv_msg);
-        mTvRating = customFindViewById(R.id.tv_rating);
-        mViewPager = customFindViewById(R.id.viewpager);
-        mTabLayout = customFindViewById(R.id.sliding_tabs);
+        mCollapsingToolbarLayout = $(R.id.collapsing_toolbar_layout);
+        mIvBook = $(R.id.iv_book_image);
+        mTvTitle = $(R.id.tv_title);
+        mTvMsg = $(R.id.tv_msg);
+        mTvRating = $(R.id.tv_rating);
+        mViewPager = $(R.id.viewpager);
+        mTabLayout = $(R.id.sliding_tabs);
         mTabLayout.addTab(mTabLayout.newTab().setText("作者信息"));
         mTabLayout.addTab(mTabLayout.newTab().setText("章节"));
         mTabLayout.addTab(mTabLayout.newTab().setText("书籍简介"));
@@ -79,7 +79,7 @@ public class BookDetailActivity extends BaseActivity {
     }
 
     @Override
-    protected void initData() {
+    protected void setUpData() {
         HttpUtils.getInstance().loadString(mUrl, new HttpUtils.HttpCallBack() {
             @Override
             public void onLoading() {

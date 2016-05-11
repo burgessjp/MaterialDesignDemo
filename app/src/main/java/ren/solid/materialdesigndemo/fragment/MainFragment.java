@@ -28,9 +28,9 @@ public class MainFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {
-        mTabLayout = customFindViewById(R.id.sliding_tabs);
-        mViewPager = customFindViewById(R.id.viewpager);
+    protected void setUpView() {
+        mTabLayout = $(R.id.sliding_tabs);
+        mViewPager = $(R.id.viewpager);
 
 
         List<String> titles = new ArrayList<>();
