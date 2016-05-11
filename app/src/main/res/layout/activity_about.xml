@@ -1,134 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:skin="http://schemas.android.com/android/skin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false">
+    android:fitsSystemWindows="true">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="450dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
-            <ImageView
-                android:id="@+id/iv_placeholder"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/avastar"
-                app:layout_collapseMode="parallax" />
-
-            <FrameLayout
-                android:id="@+id/fl_title_container"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_gravity="bottom|center_horizontal"
-                android:background="@color/colorPrimary"
-                app:layout_collapseMode="parallax"
-                skin:enable="true">
-
-                <LinearLayout
-                    android:id="@+id/ll_title_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/title_margin"
-                        android:gravity="bottom|center"
-                        android:text="关于"
-                        android:textColor="@android:color/white"
-                        android:textSize="30sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="4dp"
-                        android:text="Version:Beta For Long-Term"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
-            </FrameLayout>
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        app:behavior_overlapTop="40dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:fitsSystemWindows="false">
 
-        <android.support.v7.widget.CardView
-            android:layout_width="wrap_content"
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:cardElevation="8dp"
-            app:contentPadding="16dp">
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <TextView
-                android:id="@+id/tv_msg"
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:text="@string/about_msg" />
+                android:layout_height="450dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-        </android.support.v7.widget.CardView>
+                <ImageView
+                    android:id="@+id/iv_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/avastar"
+                    app:layout_collapseMode="parallax" />
 
-    </android.support.v4.widget.NestedScrollView>
+                <FrameLayout
+                    android:id="@+id/fl_title_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:background="@color/colorPrimary"
+                    app:layout_collapseMode="parallax"
+                    skin:enable="true">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:fitsSystemWindows="false"
-        app:layout_anchor="@id/fl_title_container"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark">
+                    <LinearLayout
+                        android:id="@+id/ll_title_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/title_margin"
+                            android:gravity="bottom|center"
+                            android:text="关于"
+                            android:textColor="@android:color/white"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="4dp"
+                            android:text="Version:Beta For Long-Term"
+                            android:textColor="@android:color/white" />
+                    </LinearLayout>
+                </FrameLayout>
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:scrollbars="none"
+            app:behavior_overlapTop="40dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <!--<Space-->
-            <!--android:layout_width="@dimen/image_final_width"-->
-            <!--android:layout_height="@dimen/image_final_width" />-->
+            <android.support.v7.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardElevation="8dp"
+                app:contentPadding="16dp">
 
-            <TextView
-                android:id="@+id/tv_toolbar_title"
+                <TextView
+                    android:id="@+id/tv_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8dp"
+                    android:text="@string/about_msg" />
+
+            </android.support.v7.widget.CardView>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:fitsSystemWindows="false"
+            app:layout_anchor="@id/fl_title_container"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
-                android:gravity="center_vertical"
-                android:text="关于"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:visibility="invisible" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <!--<Space-->
+                <!--android:layout_width="@dimen/image_final_width"-->
+                <!--android:layout_height="@dimen/image_final_width" />-->
 
-    </android.support.v7.widget.Toolbar>
+                <TextView
+                    android:id="@+id/tv_toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center_vertical"
+                    android:text="关于"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:visibility="invisible" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_width"
-        android:layout_gravity="center"
-        android:src="@drawable/avastar"
-        app:border_color="@android:color/white"
-        app:border_width="2dp"
-        app:layout_behavior="ren.solid.library.behavior.AvatarImageBehavior" />
+            </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_width"
+            android:layout_gravity="center"
+            android:src="@drawable/avastar"
+            app:border_color="@android:color/white"
+            app:border_width="2dp"
+            app:layout_behavior="ren.solid.library.behavior.AvatarImageBehavior" />
+
+    </android.support.design.widget.CoordinatorLayout>
+</FrameLayout>

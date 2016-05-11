@@ -176,7 +176,7 @@ public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRV
          */
         public void setImageFromInternet(int viewId, String url) {
             ImageView iv = getView(viewId);
-            HttpUtils.getInstance().loadImage(url, iv);//这里可根据自己的需要变更
+            HttpUtils.getInstance().loadImage(url, iv,true);//这里可根据自己的需要变更
         }
     }
 

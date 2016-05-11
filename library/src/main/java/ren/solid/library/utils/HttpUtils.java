@@ -177,9 +177,9 @@ public class HttpUtils {
     public void loadImageWithHolder(String url, ImageView iv, int placeholderResID, boolean isCenterCrop) {
         RequestCreator creator = Picasso.with(SolidApplication.getInstance()).load(url).placeholder(placeholderResID);
         if (isCenterCrop) {
-            creator.centerCrop();
+            creator.centerCrop().fit();
         }
-        creator.fit().into(iv);
+        creator.into(iv);
     }
 
 

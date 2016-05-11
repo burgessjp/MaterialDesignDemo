@@ -1,6 +1,9 @@
 package ren.solid.library.fragment;
 
+import com.squareup.picasso.Picasso;
+
 import ren.solid.library.R;
+import ren.solid.library.SolidApplication;
 import ren.solid.library.activity.ViewPicActivity;
 import ren.solid.library.fragment.base.BaseFragment;
 import ren.solid.library.utils.HttpUtils;

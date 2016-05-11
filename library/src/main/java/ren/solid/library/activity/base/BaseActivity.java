@@ -1,5 +1,6 @@
 package ren.solid.library.activity.base;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,6 @@ public abstract class BaseActivity extends SkinBaseActivity {
         init();
         initView();
         initData();
-
     }
 
     protected void initData() {

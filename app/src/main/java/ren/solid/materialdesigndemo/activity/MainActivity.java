@@ -71,14 +71,14 @@ public class MainActivity extends BaseActivity {
 
         //这句一定要在下面几句之前调用，不然就会出现点击无反应
         setSupportActionBar(mToolbar);
-
+        setNavigationViewItemClickListener();
         //ActionBarDrawerToggle配合Toolbar，实现Toolbar上菜单按钮开关效果。
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
         mDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mToolbar.setNavigationIcon(R.drawable.ic_drawer_home);
 
-        setNavigationViewItemClickListener();
+
         initDefaultFragment();
         dynamicAddSkinEnableView(mToolbar, "background", R.color.colorPrimary);
         dynamicAddSkinEnableView(mNavigationView.getHeaderView(0), "background", R.color.colorPrimary);

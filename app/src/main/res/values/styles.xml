@@ -14,10 +14,15 @@
         <item name="android:src">@drawable/ic_menu_overflow</item>
     </style>
 
-    <style name="CollapsingToolbarTitleStyle"
-        parent="@android:style/TextAppearance">
+    <style name="CollapsingToolbarTitleStyle" parent="@android:style/TextAppearance">
         <item name="android:textColor">@android:color/transparent</item>
     </style>
+
+    <style name="MaterialTheme.DrawerArrowToggle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">#fff</item>
+    </style>
+
+
 
 
 </resources>
