@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="F:\MyProject\TRS\MaterialDesignDemo\ThirdLibrary\photoview\src\main\res"/><source path="F:\MyProject\TRS\MaterialDesignDemo\ThirdLibrary\photoview\build\generated\res\rs\release"/><source path="F:\MyProject\TRS\MaterialDesignDemo\ThirdLibrary\photoview\build\generated\res\resValues\release"/></dataSet><dataSet config="release"><source path="F:\MyProject\TRS\MaterialDesignDemo\ThirdLibrary\photoview\src\release\res"/></dataSet><mergedItems/></merger>

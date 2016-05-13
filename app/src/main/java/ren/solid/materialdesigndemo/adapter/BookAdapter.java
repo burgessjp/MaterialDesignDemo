@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import java.util.List;
 
-import ren.solid.library.adapter.base.SolidRVBaseAdapter;
+import ren.solid.library.adapter.SolidRVBaseAdapter;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.activity.BookDetailActivity;
 import ren.solid.materialdesigndemo.bean.BookBean;

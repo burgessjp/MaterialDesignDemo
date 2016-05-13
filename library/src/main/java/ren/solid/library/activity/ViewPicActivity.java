@@ -1,24 +1,17 @@
 package ren.solid.library.activity;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
-
-import com.thin.downloadmanager.DownloadRequest;
-import com.thin.downloadmanager.DownloadStatusListenerV1;
-
-import java.io.File;
+import java.util.ArrayList;
 
 import ren.solid.library.R;
 import ren.solid.library.fragment.ViewPicFragment;
-import ren.solid.library.utils.FileUtils;
-import ren.solid.library.utils.HttpUtils;
-import ren.solid.library.utils.SystemShareUtils;
 
 /**
  * Created by _SOLID
@@ -30,14 +23,23 @@ import ren.solid.library.utils.SystemShareUtils;
 public class ViewPicActivity extends ToolbarActivity {
 
     private static String TAG = "ViewPicActivity";
-    public final static String IMG_URL = "ViewPicActivity";
-    private String mUrl = "";
-    private String mSavePath;
+    public final static String IMG_URLS = "ImageUrls";
+    private ArrayList<String> mUrlList;
+
+    private ViewPicFragment mFragment;
 
     @Override
     protected void init() {
         super.init();
-        mUrl = getIntent().getExtras().getString(IMG_URL);
+        mUrlList = getIntent().getExtras().getStringArrayList(IMG_URLS);
+
+    }
+
+    @Override
+    protected void setUpView() {
+
+        super.setUpView();
+
     }
 
     @Override
@@ -47,11 +49,11 @@ public class ViewPicActivity extends ToolbarActivity {
 
     @Override
     protected Fragment setFragment() {
-        ViewPicFragment f = new ViewPicFragment();
+        mFragment = new ViewPicFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(IMG_URL, mUrl);
-        f.setArguments(bundle);
-        return f;
+        bundle.putStringArrayList(IMG_URLS, mUrlList);
+        mFragment.setArguments(bundle);
+        return mFragment;
     }
 
     @Override
@@ -65,39 +67,13 @@ public class ViewPicActivity extends ToolbarActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_save) {
-            downloadPicture(0);
+            mFragment.downloadPicture(0);
             return true;
         } else if (id == R.id.action_share) {
-            downloadPicture(1);
+            mFragment.downloadPicture(1);
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void downloadPicture(final int action) {
-        mSavePath = FileUtils.getSaveImagePath(this) + File.separator + FileUtils.getFileName(mUrl);
-        Log.i(TAG, mSavePath);
-        HttpUtils.downloadFile(mUrl, mSavePath, new DownloadStatusListenerV1() {
-            @Override
-            public void onDownloadComplete(DownloadRequest downloadRequest) {
-                if (action == 0) {
-                    Snackbar.make(mToolbar, "已保存至:" + mSavePath, Snackbar.LENGTH_SHORT).show();
-                } else {
-                    SystemShareUtils.shareImage(ViewPicActivity.this, Uri.parse(mSavePath));
-                }
-            }
-
-            @Override
-            public void onDownloadFailed(DownloadRequest downloadRequest, int errorCode, String errorMessage) {
-                if (action == 0)
-                    Snackbar.make(mToolbar, "保存失败:" + errorMessage, Snackbar.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onProgress(DownloadRequest downloadRequest, long totalBytes, long downloadedBytes, int progress) {
-
-            }
-        });
     }
 
 

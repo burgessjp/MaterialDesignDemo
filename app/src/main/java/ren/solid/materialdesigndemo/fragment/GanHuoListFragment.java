@@ -18,8 +18,8 @@ import java.util.List;
 
 import ren.solid.library.activity.ViewPicActivity;
 import ren.solid.library.activity.WebViewActivity;
-import ren.solid.library.adapter.base.SolidRVBaseAdapter;
-import ren.solid.library.fragment.base.BaseRecyclerViewFragment;
+import ren.solid.library.adapter.SolidRVBaseAdapter;
+import ren.solid.library.fragment.XRecyclerViewFragment;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.bean.GanHuoBean;
 import ren.solid.materialdesigndemo.constants.Apis;
@@ -30,7 +30,7 @@ import ren.solid.library.utils.HttpUtils;
  * Date:2016/4/19
  * Time:10:57
  */
-public class GanHuoListFragment extends BaseRecyclerViewFragment {
+public class GanHuoListFragment extends XRecyclerViewFragment {
 
     private static String TAG = "GanHuoListFragment";
     private String mType;
@@ -78,12 +78,9 @@ public class GanHuoListFragment extends BaseRecyclerViewFragment {
                     holder.getView(R.id.fl_head_date_wrap).setVisibility(View.VISIBLE);
                 } else {
                     boolean isEqual = mBeans.get(position - 1).getPublishedAt().equals(mBeans.get(position).getPublishedAt());
-                    if (!isEqual)
-                    {
+                    if (!isEqual) {
                         holder.getView(R.id.fl_head_date_wrap).setVisibility(View.VISIBLE);
-                    }
-                    else
-                    {
+                    } else {
                         holder.getView(R.id.fl_head_date_wrap).setVisibility(View.GONE);
                     }
                 }
@@ -98,7 +95,7 @@ public class GanHuoListFragment extends BaseRecyclerViewFragment {
                     holder.setText(R.id.tv_desc, bean.getDesc());
                 }
 
-                holder.setText(R.id.tv_head_date,bean.getPublishedAt());
+                holder.setText(R.id.tv_head_date, bean.getPublishedAt());
                 holder.setText(R.id.tv_source, bean.getSource());
                 holder.setText(R.id.tv_people, bean.getWho());
                 holder.setText(R.id.tv_time, bean.getPublishedAt().substring(0, 10));
@@ -114,6 +111,8 @@ public class GanHuoListFragment extends BaseRecyclerViewFragment {
             protected void onItemClick(int position) {
 
                 String url = mBeans.get(position - 1).getUrl();
+                ArrayList<String> images = new ArrayList<String>();
+                images.add(url);
                 if (!url.endsWith(".jpg")) {
                     Intent intent = new Intent(getMContext(), WebViewActivity.class);
                     intent.putExtra(WebViewActivity.WEB_URL, url);
@@ -121,7 +120,7 @@ public class GanHuoListFragment extends BaseRecyclerViewFragment {
                     getMContext().startActivity(intent);
                 } else {
                     Intent intent = new Intent(getMContext(), ViewPicActivity.class);
-                    intent.putExtra(ViewPicActivity.IMG_URL, url);
+                    intent.putStringArrayListExtra(ViewPicActivity.IMG_URLS, images);
                     getMContext().startActivity(intent);
                 }
             }

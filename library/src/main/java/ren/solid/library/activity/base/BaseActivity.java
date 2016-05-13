@@ -16,8 +16,8 @@ public abstract class BaseActivity extends SkinBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(setLayoutResourceID());
         init();
+        setContentView(setLayoutResourceID());
         setUpView();
         setUpData();
     }
