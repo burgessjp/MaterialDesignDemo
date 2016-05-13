@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="F:\MyProject\TRS\MaterialDesignDemo\app\build\intermediates\exploded-aar\MaterialDesignDemo\library\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5c033472ecab5b66c827139a83198b71f1ee0b4b">
+        <dex dex="F:\MyProject\TRS\MaterialDesignDemo\app\build\intermediates\pre-dexed\debug\classes-8f6727ef4e8d08ce52ad8891f8f6fdc7d60c3f09.jar" />
+    </item>
+
+</items>
