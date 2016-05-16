@@ -13,5 +13,4 @@
         android:layout_height="wrap_content"
         android:text="请求失败，点击重试" />
 
-
 </LinearLayout>

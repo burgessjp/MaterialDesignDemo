@@ -1,9 +1,6 @@
 package ren.solid.library.fragment;
 
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
@@ -11,7 +8,7 @@ import java.util.List;
 
 import ren.solid.library.R;
 import ren.solid.library.fragment.base.BaseListFragment;
-import ren.solid.library.utils.LogUtils;
+import ren.solid.library.utils.Logger;
 import ren.solid.library.utils.StringUtils;
 
 /**
@@ -71,7 +68,7 @@ public abstract class SwipeRefreshViewFragment<T> extends BaseListFragment {
 
     @Override
     protected void onDataSuccessReceived(String result) {
-        LogUtils.i(getMContext(), "onDataSuccessReceived:" + result);
+        Logger.i(getMContext(), "onDataSuccessReceived:" + result);
         if (!StringUtils.isNullOrEmpty(result)) {
             List<T> list = parseData(result);
 

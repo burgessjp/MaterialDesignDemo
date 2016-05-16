@@ -8,137 +8,136 @@
     android:orientation="vertical"
     android:padding="20dp">
 
+    <ren.solid.materialdesigndemo.view.QQHealthView
+        android:id="@+id/qqhealthview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <!--<ren.solid.materialdesigndemo.view.QQHealthView-->
-    <!--android:id="@+id/qqhealthview"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content" />-->
+    <!--<ren.solid.materialdesigndemo.view.WindowsLayout-->
+        <!--android:id="@+id/windows_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="#6b6b6b">-->
 
-    <ren.solid.materialdesigndemo.view.WindowsLayout
-        android:id="@+id/windows_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#6b6b6b">
+        <!--<LinearLayout-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            <!--<ImageView-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:src="@drawable/icon_folder" />-->
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_folder" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="文件夹" />-->
+        <!--</LinearLayout>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="文件夹" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            <!--<ImageView-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:src="@drawable/icon_folder" />-->
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_folder" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="文件夹" />-->
+        <!--</LinearLayout>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="文件夹" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            <!--<ImageView-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:src="@drawable/icon_folder" />-->
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_folder" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="文件夹" />-->
+        <!--</LinearLayout>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="文件夹" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            <!--<ImageView-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:src="@drawable/icon_folder" />-->
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_folder" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="文件夹" />-->
+        <!--</LinearLayout>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="文件夹" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            <!--<ImageView-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:src="@drawable/icon_folder" />-->
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_folder" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="文件夹" />-->
+        <!--</LinearLayout>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="文件夹" />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
 
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            <!--<ImageView-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:src="@drawable/icon_folder" />-->
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/icon_folder" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="文件夹" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/ll_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#e0000000"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/icon_windows" />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="文件夹" />-->
+        <!--</LinearLayout>-->
 
 
-    </ren.solid.materialdesigndemo.view.WindowsLayout>
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ll_bottom"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:background="#e0000000"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingLeft="10dp">-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:src="@drawable/icon_windows" />-->
+        <!--</LinearLayout>-->
+
+
+    <!--</ren.solid.materialdesigndemo.view.WindowsLayout>-->
 
 </LinearLayout>

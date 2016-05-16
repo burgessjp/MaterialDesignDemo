@@ -7,8 +7,9 @@ import java.util.List;
 
 import ren.solid.library.R;
 import ren.solid.library.adapter.SolidRVBaseAdapter;
+import ren.solid.library.http.HttpClientManager;
+import ren.solid.library.http.callback.adapter.StringHttpCallBack;
 import ren.solid.library.utils.FileUtils;
-import ren.solid.library.utils.HttpUtils;
 import ren.solid.library.utils.NetworkUtils;
 import ren.solid.library.utils.StringUtils;
 import ren.solid.library.utils.ToastUtils;
@@ -56,13 +57,8 @@ public abstract class BaseListFragment<T> extends BaseFragment {
             String result = obtainOfflineData(getUrl(1));
             onDataSuccessReceived(result);
             ToastUtils.getInstance().showToast(getString(R.string.no_network));
-        } else
-            HttpUtils.getInstance().loadString(reqUrl, new HttpUtils.HttpCallBack() {
-                @Override
-                public void onLoading() {
-
-                }
-
+        } else {
+            HttpClientManager.getData(reqUrl, new StringHttpCallBack() {
                 @Override
                 public void onSuccess(String result) {
                     if (mCurrentAction == ACTION_REFRESH) {//store the first page data
@@ -73,9 +69,12 @@ public abstract class BaseListFragment<T> extends BaseFragment {
 
                 @Override
                 public void onError(Exception e) {
-                    onDataErrorReceived();
+                    {
+                        onDataErrorReceived();
+                    }
                 }
             });
+        }
     }
 
     protected void switchActionAndLoadData(int action) {

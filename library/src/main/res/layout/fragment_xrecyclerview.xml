@@ -12,5 +12,6 @@
         android:layout_weight="1" />
 
     <include layout="@layout/layout_reload" />
+    <include layout="@layout/layout_loading" />
 
 </LinearLayout>

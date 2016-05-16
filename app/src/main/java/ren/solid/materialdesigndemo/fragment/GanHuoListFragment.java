@@ -20,6 +20,9 @@ import ren.solid.library.activity.ViewPicActivity;
 import ren.solid.library.activity.WebViewActivity;
 import ren.solid.library.adapter.SolidRVBaseAdapter;
 import ren.solid.library.fragment.XRecyclerViewFragment;
+import ren.solid.library.http.HttpClientManager;
+import ren.solid.library.http.ImageLoader;
+import ren.solid.library.http.request.ImageRequest;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.bean.GanHuoBean;
 import ren.solid.materialdesigndemo.constants.Apis;
@@ -37,7 +40,6 @@ public class GanHuoListFragment extends XRecyclerViewFragment {
 
     @Override
     protected List parseData(String result) {
-
         List<GanHuoBean> list = null;
         JSONObject jsonObject = null;
         try {
@@ -67,7 +69,6 @@ public class GanHuoListFragment extends XRecyclerViewFragment {
     protected SolidRVBaseAdapter setAdapter() {
         return new SolidRVBaseAdapter<GanHuoBean>(getMContext(), new ArrayList<GanHuoBean>()) {
 
-
             @Override
             protected void onBindDataToView(SolidCommonViewHolder holder, GanHuoBean bean, int position) {
                 holder.getView(R.id.tv_desc).setVisibility(View.GONE);
@@ -89,7 +90,7 @@ public class GanHuoListFragment extends XRecyclerViewFragment {
                 if (bean.getUrl().endsWith(".jpg")) {//if it's image
                     holder.getView(R.id.iv_img).setVisibility(View.VISIBLE);
                     ImageView imageView = holder.getView(R.id.iv_img);
-                    HttpUtils.getInstance().loadImage(bean.getUrl(), imageView, true);
+                    HttpClientManager.displayImage(imageView, bean.getUrl());
                 } else {
                     holder.getView(R.id.tv_desc).setVisibility(View.VISIBLE);
                     holder.setText(R.id.tv_desc, bean.getDesc());

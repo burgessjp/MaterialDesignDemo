@@ -10,13 +10,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
+import java.lang.reflect.Type;
 
 import ren.solid.library.activity.base.BaseActivity;
+import ren.solid.library.http.HttpClientManager;
+import ren.solid.library.http.ImageLoader;
+import ren.solid.library.http.callback.adapter.JsonHttpCallBack;
+import ren.solid.library.http.request.ImageRequest;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.adapter.BookInfoPageAdapter;
 import ren.solid.materialdesigndemo.bean.BookBean;
-import ren.solid.library.utils.HttpUtils;
 
 /**
  * Created by _SOLID
@@ -80,32 +83,39 @@ public class BookDetailActivity extends BaseActivity {
 
     @Override
     protected void setUpData() {
-        HttpUtils.getInstance().loadString(mUrl, new HttpUtils.HttpCallBack() {
+
+        HttpClientManager.getData(mUrl, new JsonHttpCallBack<BookBean>() {
             @Override
-            public void onLoading() {
+            public void onSuccess(BookBean result) {
+                mBookBean = result;
+                mCollapsingToolbarLayout.setTitle(result.getTitle());
+                mTvTitle.setText(result.getTitle());
+                mTvMsg.setText(result.getAuthor() + "/" + result.getPublisher() + "/" + result.getPubdate());
+                mTvRating.setText(result.getRating().getAverage() + "分");
 
-            }
+                ImageRequest imageRequest = new ImageRequest.Builder().imgView(mIvBook).url(result.getImages().getLarge()).create();
+                ImageLoader.getProvider().loadImage(imageRequest);
 
-            @Override
-            public void onSuccess(String result) {
-                Gson gson = new Gson();
-                mBookBean = gson.fromJson(result, BookBean.class);
-                mCollapsingToolbarLayout.setTitle(mBookBean.getTitle());
-                mTvTitle.setText(mBookBean.getTitle());
-                mTvMsg.setText(mBookBean.getAuthor() + "/" + mBookBean.getPublisher() + "/" + mBookBean.getPubdate());
-                mTvRating.setText(mBookBean.getRating().getAverage() + "分");
-                HttpUtils.getInstance().loadImage(mBookBean.getImages().getLarge(), mIvBook);
-
-                BookInfoPageAdapter adapter = new BookInfoPageAdapter(BookDetailActivity.this, mBookBean, getSupportFragmentManager());
+                BookInfoPageAdapter adapter = new BookInfoPageAdapter(BookDetailActivity.this, result, getSupportFragmentManager());
                 mViewPager.setAdapter(adapter);
                 mTabLayout.setupWithViewPager(mViewPager);
-
             }
 
             @Override
             public void onError(Exception e) {
 
             }
+
+            @Override
+            public DataType getDataType() {
+                return DataType.OBJECT;
+            }
+
+            @Override
+            public Type getType() {
+                return BookBean.class;
+            }
+
         });
     }
 }

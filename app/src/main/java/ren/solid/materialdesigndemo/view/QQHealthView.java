@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import ren.solid.library.utils.Logger;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.library.utils.ViewUtils;
 
@@ -395,6 +396,7 @@ public class QQHealthView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
         RectF rectF = new RectF();
         rectF.top = mWidth;
         rectF.left = 380.f / 450.f * mWidth;
@@ -402,8 +404,9 @@ public class QQHealthView extends View {
         rectF.bottom = mHeight;
         if (rectF.contains(event.getX(), event.getY())) {//当前点击的坐标在右下角的范围内
             //在这里可以做点击事件的监听
+            Logger.i(this,"onClick");
             Snackbar.make(this, "Click", Snackbar.LENGTH_SHORT).show();
-            return true;
+            return false;
         } else {
             return super.onTouchEvent(event);
         }

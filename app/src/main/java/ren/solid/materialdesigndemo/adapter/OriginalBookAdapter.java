@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ren.solid.library.http.HttpClientManager;
+import ren.solid.library.http.HttpHelper;
+import ren.solid.library.http.ImageLoader;
+import ren.solid.library.http.request.ImageRequest;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.activity.BookDetailActivity;
 import ren.solid.materialdesigndemo.bean.BookBean;
@@ -59,7 +63,7 @@ public class OriginalBookAdapter extends RecyclerView.Adapter<OriginalBookAdapte
         holder.tv_publisher.setText("出版社:" + bookBean.getPublisher());
         holder.tv_num_rating.setText(bookBean.getRating().getNumRaters() + "人评分");
 
-        HttpUtils.getInstance().loadImage(bookBean.getImage(), holder.iv_image);
+        HttpClientManager.displayImage(holder.iv_image, bookBean.getImage());
 
 
     }

@@ -7,18 +7,19 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.thin.downloadmanager.DownloadRequest;
-import com.thin.downloadmanager.DownloadStatusListenerV1;
-
 import java.io.File;
 import java.util.ArrayList;
 
 import ren.solid.library.R;
 import ren.solid.library.activity.ViewPicActivity;
 import ren.solid.library.fragment.base.BaseFragment;
+import ren.solid.library.http.HttpHelper;
+import ren.solid.library.http.ImageLoader;
+import ren.solid.library.http.callback.adapter.FileHttpCallBack;
+import ren.solid.library.http.callback.adapter.StringHttpCallBack;
+import ren.solid.library.http.request.ImageRequest;
 import ren.solid.library.utils.FileUtils;
-import ren.solid.library.utils.HttpUtils;
-import ren.solid.library.utils.LogUtils;
+import ren.solid.library.utils.Logger;
 import ren.solid.library.utils.SnackBarUtils;
 import ren.solid.library.utils.SystemShareUtils;
 import uk.co.senab.photoview.PhotoView;
@@ -68,7 +69,8 @@ public class ViewPicFragment extends BaseFragment {
 
             //setUpPhotoViewAttacher(photoView);
 
-            HttpUtils.getInstance().loadImage(mUrlList.get(position), photoView);
+            ImageRequest imageRequest = new ImageRequest.Builder().imgView(photoView).url(mUrlList.get(position)).create();
+            ImageLoader.getProvider().loadImage(imageRequest);
 
             container.addView(photoView);
 
@@ -109,26 +111,27 @@ public class ViewPicFragment extends BaseFragment {
      */
     public void downloadPicture(final int action) {
         mSavePath = FileUtils.getSaveImagePath(getMContext()) + File.separator + FileUtils.getFileName(mUrlList.get(0));
-        LogUtils.i(mSavePath);
-        HttpUtils.downloadFile(mUrlList.get(0), mSavePath, new DownloadStatusListenerV1() {
+        Logger.i(this, mSavePath);
+
+        HttpHelper.getProvider().download(mUrlList.get(0), mSavePath, new FileHttpCallBack() {
             @Override
-            public void onDownloadComplete(DownloadRequest downloadRequest) {
+            public void onSuccess(String filePath) {
                 if (action == 0) {
-                    SnackBarUtils.makeLong(mViewPager, "已保存至:" + mSavePath).warning();
+                    SnackBarUtils.makeLong(mViewPager, "已保存至:" + filePath).warning();
                 } else {
-                    SystemShareUtils.shareImage(getMContext(), Uri.parse(mSavePath));
+                    SystemShareUtils.shareImage(getMContext(), Uri.parse(filePath));
                 }
             }
 
             @Override
-            public void onDownloadFailed(DownloadRequest downloadRequest, int errorCode, String errorMessage) {
-                if (action == 0)
-                    SnackBarUtils.makeLong(mViewPager, "保存失败:" + errorMessage).danger();
+            public void onProgress(long totalBytes, long downloadedBytes, int progress) {
+                Logger.i(this, "totalBytes:" + totalBytes + " downloadedBytes:" + downloadedBytes + " progress:" + progress);
             }
 
             @Override
-            public void onProgress(DownloadRequest downloadRequest, long totalBytes, long downloadedBytes, int progress) {
-
+            public void onError(Exception e) {
+                if (action == 0)
+                    SnackBarUtils.makeLong(mViewPager, "保存失败:" + e.getMessage()).danger();
             }
         });
     }

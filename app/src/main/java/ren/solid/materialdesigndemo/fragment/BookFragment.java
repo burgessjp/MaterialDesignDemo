@@ -9,25 +9,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import ren.solid.library.fragment.base.BaseFragment;
+import ren.solid.library.http.HttpClientManager;
+import ren.solid.library.http.callback.adapter.JsonHttpCallBack;
+import ren.solid.library.utils.ToastUtils;
 import ren.solid.materialdesigndemo.R;
 import ren.solid.materialdesigndemo.adapter.BookAdapter;
 import ren.solid.materialdesigndemo.bean.BookBean;
 import ren.solid.materialdesigndemo.constants.Apis;
-import ren.solid.library.utils.HttpUtils;
-import ren.solid.library.utils.ToastUtils;
 
 /**
  * Created by _SOLID
@@ -98,25 +96,23 @@ public class BookFragment extends BaseFragment implements View.OnClickListener {
     private void getData() {
         String reqUrl = Apis.SearchBookApi + "?q=" + mCurrentKeyWord + "&start=" + (mCurrentPageIndex - 1) * mPageSize +
                 "&count=" + mPageSize;
-        HttpUtils.getInstance().loadString(reqUrl, new HttpUtils.HttpCallBack() {
+
+        HttpClientManager.getData(reqUrl, new JsonHttpCallBack<List<BookBean>>() {
             @Override
-            public void onLoading() {
+            public Type getType() {
+                return new TypeToken<List<BookBean>>() {
+                }.getType();
             }
 
             @Override
-            public void onSuccess(String result) {
-                try {
-                    JSONObject jsonObject = new JSONObject(result);
-                    Gson gson = new Gson();
-                    List<BookBean> list = gson.fromJson(
-                            jsonObject.getString("books"),
-                            new TypeToken<List<BookBean>>() {
-                            }.getType());
-                    mBookAdapter.addAll(list);
-                    loadComplete();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            public String getDataName() {
+                return "books";
+            }
+
+            @Override
+            public void onSuccess(List<BookBean> result) {
+                mBookAdapter.addAll(result);
+                loadComplete();
             }
 
             @Override

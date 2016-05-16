@@ -19,7 +19,7 @@ import ren.solid.library.utils.StringUtils;
  * Created by _SOLID
  * Date:2016/4/18
  * Time:17:36
- * <p/>
+ * <p>
  * common fragment for list data display ,and you can extends this fragment for everywhere you want to display list data
  */
 public abstract class XRecyclerViewFragment<T> extends BaseListFragment {
@@ -28,6 +28,7 @@ public abstract class XRecyclerViewFragment<T> extends BaseListFragment {
 
     private XRecyclerView mRecyclerView;
     private LinearLayout mLLReloadWarp;
+    private LinearLayout mLLLoadingWarp;
     private Button mBtnReload;
 
 
@@ -40,6 +41,7 @@ public abstract class XRecyclerViewFragment<T> extends BaseListFragment {
     protected void setUpView() {
 
         mLLReloadWarp = $(R.id.ll_reload_wrap);
+        mLLLoadingWarp = $(R.id.ll_loading);
         mBtnReload = $(R.id.btn_reload);
         mRecyclerView = $(R.id.recyclerview);
 
@@ -62,7 +64,7 @@ public abstract class XRecyclerViewFragment<T> extends BaseListFragment {
         mBtnReload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mLLReloadWarp.setVisibility(View.GONE);
+                showLoading();
                 switchActionAndLoadData(ACTION_REFRESH);
             }
         });
@@ -79,7 +81,7 @@ public abstract class XRecyclerViewFragment<T> extends BaseListFragment {
     @Override
     protected void onDataErrorReceived() {
         Log.i(TAG, "onDataErrorReceived");
-        mLLReloadWarp.setVisibility(View.VISIBLE);
+        showError();
         loadComplete();
     }
 
@@ -90,7 +92,7 @@ public abstract class XRecyclerViewFragment<T> extends BaseListFragment {
             List<T> list = parseData(result);
             mAdapter.addAll(list, mCurrentAction == ACTION_REFRESH);
             if (mCurrentAction != ACTION_PRE_LOAD) loadComplete();
-            mLLReloadWarp.setVisibility(View.GONE);
+            showNormal();
         } else {
             onDataErrorReceived();
         }
@@ -102,6 +104,21 @@ public abstract class XRecyclerViewFragment<T> extends BaseListFragment {
             mRecyclerView.refreshComplete();
         if (mCurrentAction == ACTION_LOAD_MORE)
             mRecyclerView.loadMoreComplete();
+    }
+
+    private void showNormal() {
+        mLLReloadWarp.setVisibility(View.GONE);
+        mLLLoadingWarp.setVisibility(View.GONE);
+    }
+
+    private void showLoading() {
+        mLLReloadWarp.setVisibility(View.GONE);
+        mLLLoadingWarp.setVisibility(View.VISIBLE);
+    }
+
+    private void showError() {
+        mLLReloadWarp.setVisibility(View.VISIBLE);
+        mLLLoadingWarp.setVisibility(View.GONE);
     }
 
 

@@ -14,16 +14,17 @@ import android.widget.TextView;
 import java.util.List;
 
 import ren.solid.library.R;
-import ren.solid.library.utils.HttpUtils;
+import ren.solid.library.http.ImageLoader;
+import ren.solid.library.http.request.ImageRequest;
 
 
 /**
  * Created by _SOLID
  * Date:2016/4/5
  * Time:11:18
- * <p/>
+ * <p>
  * 通用的RecyclerView的适配器
- * <p/>
+ * <p>
  * 思想上参考了Hongyang的 http://blog.csdn.net/lmj623565791/article/details/38902805这篇博客
  */
 public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRVBaseAdapter.SolidCommonViewHolder> {
@@ -187,7 +188,8 @@ public abstract class SolidRVBaseAdapter<T> extends RecyclerView.Adapter<SolidRV
          */
         public void setImageFromInternet(int viewId, String url) {
             ImageView iv = getView(viewId);
-            HttpUtils.getInstance().loadImage(url, iv, true);//这里可根据自己的需要变更
+            ImageRequest imageRequest = new ImageRequest.Builder().imgView(iv).url(url).create();
+            ImageLoader.getProvider().loadImage(imageRequest);
         }
     }
 

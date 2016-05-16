@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="okhttputils-2.4.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.zhy/okhttputils/2.4.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.zhy/okhttputils/2.4.1/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zhy/okhttputils/2.4.1/4c8989cf46f0281461549b6c6ca4026aaa080219/okhttputils-2.4.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
