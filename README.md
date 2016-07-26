@@ -1,3 +1,4 @@
+关于换肤请移步：[ThemeSkinning](https://github.com/burgessjp/ThemeSkinning)
 
 - **2016年5月13日更新：合并library和lib_skinloader,并优化部分代码**
 
@@ -12,7 +13,7 @@
 
 
 
- 关于换肤请移步：[ThemeSkinning](https://github.com/burgessjp/ThemeSkinning)
+
 ####这是一个基于Material Design Support Library的一个小项目,里面含有常用的一些组件及功能。
 
 
