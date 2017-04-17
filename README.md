@@ -14,10 +14,10 @@
 
 
 
-####这是一个基于Material Design Support Library的一个小项目,里面含有常用的一些组件及功能。
+#### 这是一个基于Material Design Support Library的一个小项目,里面含有常用的一些组件及功能。
 
 
-###目前已实现的一些组件及功能
+### 目前已实现的一些组件及功能
 
 - 基于Material Design Support Library作为项目整体框架。对应博文：[Android Material Design 兼容库的使用详解](http://www.jianshu.com/p/1e6eed09d48b)
 
@@ -27,7 +27,7 @@
 
 -  主题换肤功能。对应博文：[Android主题换肤 无缝切换](http://www.jianshu.com/p/af7c0585dd5b)
 
-###感谢
+### 感谢
 
 - fengjundev提供的开源库[Android-Skin-Loader](https://github.com/fengjundev/Android-Skin-Loader)
 
@@ -35,7 +35,7 @@
 - chrisbanes提供的开源库[PhotoView](https://github.com/chrisbanes/PhotoView)
 
 
-###使用到的其他开源库
+### 使用到的其他开源库
 
 - [okhttp](https://github.com/square/okhttp)
 - [gson](https://github.com/google/gson)
@@ -45,7 +45,7 @@
 
 **特别申明:本项目主要供学习使用,无任何商业用途。**
 
-###效果展示图
+### 效果展示图
 
 ![Demo换肤效果图](http://upload-images.jianshu.io/upload_images/623504-0c8a0c72d3a173ed.gif?imageMogr2/auto-orient/strip)
 
